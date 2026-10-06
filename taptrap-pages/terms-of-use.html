@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TapTrap — Terms of Use / Kullanım Koşulları</title>
+<style>
+  :root{
+    --canvas:#07080A; --surface:#111317; --surface2:#15181D; --hairline:#23262D;
+    --ink:#EDEFF3; --ink2:#A8AFBC; --ink3:#767D8A;
+    --blue:#4A8DFF; --indigo:#7B83F7; --orchid:#C77DD0; --amber:#FFA24A; --red:#FF453A;
+    --heat:linear-gradient(90deg,#4A8DFF 0%,#7B83F7 27%,#C77DD0 52%,#FFA24A 78%,#FF453A 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--canvas); color:var(--ink2);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+    font-size:16px; line-height:1.72; letter-spacing:.005em;
+    padding:0 20px calc(64px + env(safe-area-inset-bottom,0px));
+  }
+  .ramp{position:fixed;top:0;left:0;right:0;height:3px;background:var(--heat);z-index:10}
+  .wrap{max-width:720px;margin:0 auto;padding-top:calc(44px + env(safe-area-inset-top,0px))}
+
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+  h1{
+    color:var(--ink);font-size:34px;line-height:1.15;letter-spacing:-.02em;font-weight:700;
+    margin:10px 0 10px;
+  }
+  h1 .sub{display:block;font-size:18px;font-weight:500;color:var(--ink3);letter-spacing:0;margin-top:6px}
+  .stamp{font-size:13px;color:var(--ink3);margin-bottom:22px}
+  .stamp b{color:var(--ink2);font-weight:600}
+
+  .langnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px}
+  .langnav a{
+    display:inline-block;font-size:13px;font-weight:600;text-decoration:none;
+    color:var(--ink2);background:var(--surface);border:1px solid var(--hairline);
+    border-radius:999px;padding:8px 15px;
+  }
+  .langnav a.on{color:#07080A;background:#EDEFF3;border-color:#EDEFF3}
+
+  h2{
+    color:var(--ink);font-size:22px;line-height:1.3;letter-spacing:-.01em;font-weight:700;
+    margin:46px 0 14px;padding-left:14px;border-left:3px solid var(--orchid);
+  }
+  h2.lang{
+    font-size:28px;margin-top:72px;padding:26px 0 0;border-left:0;border-top:1px solid var(--hairline);
+  }
+  h3{color:var(--ink);font-size:16px;font-weight:650;margin:26px 0 8px}
+  p{margin:0 0 14px}
+  a{color:var(--blue)}
+  a:hover{color:var(--orchid)}
+  strong{color:var(--ink);font-weight:650}
+
+  ul{margin:0 0 16px;padding-left:2px;list-style:none}
+  li{position:relative;padding-left:20px;margin-bottom:9px}
+  li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:2px;background:var(--amber)}
+  ul.no li::before{background:var(--red)}
+  ul.yes li::before{background:var(--blue)}
+
+  .toc{background:var(--surface);border:1px solid var(--hairline);border-radius:14px;padding:16px 18px;margin:0 0 8px}
+  .toc ol{margin:0;padding-left:20px;font-size:14.5px}
+  .toc li{padding-left:0;margin-bottom:5px}
+  .toc li::before{display:none}
+  .toc a{color:var(--ink2);text-decoration:none}
+  .toc a:hover{color:var(--blue);text-decoration:underline}
+
+  .rule{
+    background:linear-gradient(180deg,rgba(255,69,58,.11),rgba(255,69,58,.025));
+    border:1px solid rgba(255,69,58,.30);border-radius:16px;
+    padding:20px 20px 6px;margin:18px 0 22px;
+  }
+  .rule .flag{
+    display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    font-weight:700;color:var(--red);margin-bottom:10px;
+  }
+  .rule p:last-child{margin-bottom:14px}
+
+  .box{background:var(--surface);border:1px solid var(--hairline);border-radius:14px;padding:18px 18px 4px;margin:16px 0 20px}
+  .box p{font-size:14.5px}
+  .box p:last-child{margin-bottom:18px}
+
+  .fine{font-size:14px;color:var(--ink3)}
+  .contact{
+    background:var(--surface2);border:1px solid var(--hairline);border-radius:14px;
+    padding:18px;margin:18px 0 0;font-size:15px;
+  }
+  .contact a{font-weight:600;word-break:break-word}
+  .top{display:inline-block;margin-top:30px;font-size:13px;color:var(--ink3);text-decoration:none}
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--hairline);font-size:13px;color:var(--ink3)}
+  @media (max-width:420px){
+    body{font-size:15.5px}
+    h1{font-size:28px}
+    h2{font-size:20px}
+    h2.lang{font-size:24px}
+  }
+</style>
+</head>
+<body>
+<div class="ramp"></div>
+<div class="wrap">
+
+  <p class="eyebrow">TapTrap</p>
+  <h1 id="en">Terms of Use<span class="sub">Kullanım Koşulları</span></h1>
+  <p class="stamp">Last updated <b>23 September 2026</b> · TapTrap 1.2.0 · <span lang="tr">Son güncelleme 23 Eylül 2026</span></p>
+
+  <nav class="langnav">
+    <a class="on" href="#en">English</a>
+    <a href="#tr" lang="tr">Türkçe</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </nav>
+
+  <p>These Terms are an agreement between you and <strong>MNP</strong> ("we", "us"), the developer of TapTrap. By downloading, opening or using TapTrap you accept them. If you do not accept them, do not use the app.</p>
+
+  <div class="toc">
+    <ol>
+      <li><a href="#en-what">What TapTrap is</a></li>
+      <li><a href="#en-isnt">What TapTrap is not</a></li>
+      <li><a href="#en-own">Use it on your own phone</a></li>
+      <li><a href="#en-agree">What you agree not to do</a></li>
+      <li><a href="#en-credits">Trap credits</a></li>
+      <li><a href="#en-catch">Opening a catch</a></li>
+      <li><a href="#en-pro">TapTrap PRO</a></li>
+      <li><a href="#en-ads">Ads</a></li>
+      <li><a href="#en-pin">Your PIN and your data</a></li>
+      <li><a href="#en-ip">Intellectual property</a></li>
+      <li><a href="#en-warranty">No warranty</a></li>
+      <li><a href="#en-liability">Limitation of liability</a></li>
+      <li><a href="#en-changes">Changes to these Terms</a></li>
+      <li><a href="#en-law">Governing law</a></li>
+      <li><a href="#en-apple">App Store: Apple's terms</a></li>
+      <li><a href="#en-contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <h2 id="en-what">1 · What TapTrap is</h2>
+  <p>TapTrap turns your own phone into a trap. You pick a screenshot of your own home screen, and the app shows that screenshot full screen. Someone who picks up your phone sees what looks like an unlocked, ordinary home screen. While that fake screen is up, TapTrap records one thing: where on the screen it was touched, and when.</p>
+  <p>You get out with a secret gesture — top-left corner, top-right corner, top-left corner — and your 4-digit TapTrap PIN. Then you see the catch: how many taps, over how long, and a heatmap of where they landed.</p>
+  <p>TapTrap also includes the Don't-Tap game, a small game with its own themes. It is a game, not a trap.</p>
+
+  <h2 id="en-isnt">2 · What TapTrap is not</h2>
+  <p>Read this before you rely on anything the app shows you.</p>
+  <ul class="no">
+    <li><strong>It cannot tell you who tapped.</strong> TapTrap records taps on its own fake screen — coordinates and times, nothing else. No camera, no microphone, no photo of anyone, no name.</li>
+    <li><strong>It records nothing outside itself.</strong> It does not see your other apps, your messages, your calls, your location or anything anyone did on the phone before or after the trap.</li>
+    <li><strong>It is not evidence.</strong> A trap can miss touches, a pocket or a table can produce them, and someone can go through your phone the moment the trap is not running. Do not treat a heatmap as proof of anything about a person.</li>
+    <li><strong>It is not a security product.</strong> It does not lock your phone, protect your files or stop anyone doing anything. Your phone's own lock screen does that job; TapTrap does not replace it.</li>
+  </ul>
+
+  <h2 id="en-own">3 · Use it on your own phone</h2>
+  <div class="rule">
+    <span class="flag">The rule that matters most</span>
+    <p><strong>TapTrap is for a phone you own and control, set up by you, on purpose.</strong></p>
+    <p>Do not install TapTrap on someone else's phone. Do not arm a trap on a device you do not control. Do not use the app to watch, track or check up on another person where that is against the law, or without whatever consent the law where you live requires. That includes a partner or an ex, a family member, a housemate, an employee, and a child in someone else's care.</p>
+    <p>TapTrap answers one question about one phone: <em>did someone go through mine?</em> Turning it on another person is outside what the app is for. If you do it anyway, you are breaking these Terms, you are doing it entirely on your own responsibility, and we want no part in it.</p>
+    <p>If you are not sure whether what you have in mind is lawful where you live — don't.</p>
+  </div>
+  <p>You are also responsible for the images you put into the app. Only use a screenshot or photo you have the right to use, and remember that whoever picks up your phone will see whatever you chose as the fake screen, and the optional "Caught you" image if you set one.</p>
+
+  <h2 id="en-agree">4 · What you agree not to do</h2>
+  <ul class="no">
+    <li>Use TapTrap for anything unlawful, or to harass, intimidate or monitor another person.</li>
+    <li>Reverse engineer, decompile or disassemble the app, except to the extent the law expressly allows it.</li>
+    <li>Work around the TapTrap PIN, the trap credits, the purchase flow or the ads.</li>
+    <li>Sell, rent, sublicense or redistribute the app or any part of it.</li>
+  </ul>
+  <p class="fine">You need to be old enough to enter into a contract where you live and to hold your own App Store or Google Play account. If you are not, an adult responsible for you has to accept these Terms on your behalf.</p>
+
+  <h2 id="en-credits">5 · Trap credits</h2>
+  <p>Without TapTrap PRO, you arm traps with <strong>trap credits</strong>. Here is exactly how they work.</p>
+  <ul class="yes">
+    <li>You are given <strong>2 credits</strong> once, the first time this version of TapTrap runs.</li>
+    <li><strong>Arming a trap costs 1 credit.</strong> It is spent the moment the trap starts, and it is not given back — a trap nobody touched is still a result.</li>
+    <li><strong>Opening a catch's heatmap costs 1 credit</strong> as well (see the next section).</li>
+    <li><strong>You earn 1 credit</strong> for each rewarded video you choose to watch to the end. The app stops offering the video once you are holding 3 credits.</li>
+    <li>The Don't-Tap game, the secret-exit practice run and the trap preview cost nothing at all.</li>
+  </ul>
+  <p>And here is what trap credits are <strong>not</strong>:</p>
+  <ul class="no">
+    <li><strong>Not a currency.</strong> Credits are not money, not a virtual currency and not a token of any kind. They have no cash value, cannot be exchanged for anything, and cannot be refunded.</li>
+    <li><strong>You cannot buy them.</strong> There is no price on a credit. No purchase in TapTrap — not a subscription, not Lifetime — grants you credits. PRO does something different: it removes the need for them entirely.</li>
+    <li><strong>They do not expire.</strong> A credit you hold stays until you spend it.</li>
+    <li><strong>They live only on your phone.</strong> Credits are stored in the app's own storage on the device. They are not attached to your App Store or Google Play account, they do not follow you to another phone, and "Restore purchases" does not bring them back. If TapTrap is removed from the device, they go with it.</li>
+    <li><strong>Nothing about them leaves the device.</strong> We cannot see your balance, and we cannot add to it or take from it.</li>
+  </ul>
+  <p><strong>Watching an ad is always your choice.</strong> An ad never starts on its own: it plays only after you tap a button that says what you get for it. Everything TapTrap does with a trap you have already armed — seeing that a catch happened, when it happened, how long the trap ran, and how many taps in how many zones — is free and never asks for an ad. If you run out of credits and you do not want to watch anything, TapTrap PRO removes credits from your life altogether.</p>
+  <p class="fine">"Reset all data" in Settings deletes your catches, images and videos, Caught-you settings and PIN, but it does not take away credits you are still holding.</p>
+
+  <h2 id="en-catch">6 · Opening a catch</h2>
+  <p>Every catch shows you, for free and forever: what it is, when the trap was armed and disarmed, the first and last tap, the timeline, and how many taps in how many zones. That evidence is never locked away.</p>
+  <p><strong>The heatmap</strong> — the picture of exactly where on your screen the taps landed — is the part that opening a catch unlocks. For a free user, opening one costs either <strong>1 trap credit</strong> or <strong>one rewarded video watched to the end</strong> (that video opens that one catch; it does not add a credit and does not spend one). There is no free first catch: a catch recorded in this version starts locked.</p>
+  <ul class="yes">
+    <li><strong>An unlock is permanent.</strong> Once a catch is open, it stays open, and opening it again never costs anything.</li>
+    <li><strong>Close the video early and nothing happens.</strong> Nothing is charged, nothing is earned, and the catch stays locked.</li>
+    <li><strong>A credit is never lost for nothing.</strong> If a credit is spent but the catch cannot actually be opened, the credit is handed straight back and the app tells you so.</li>
+    <li><strong>Old catches were left open.</strong> Catches that already existed when you updated to TapTrap 1.2.0 were unlocked automatically — evidence you could already see is not taken away from you.</li>
+    <li><strong>With TapTrap PRO every catch is open</strong> and nothing is spent. A catch you actually looked at while you had PRO stays open even if PRO later ends.</li>
+    <li>Deleting your history or using "Reset all data" forgets which catches were open — the catches themselves are gone at that point.</li>
+  </ul>
+
+  <h2 id="en-pro">7 · TapTrap PRO</h2>
+  <p>TapTrap PRO is the paid upgrade. It gives you unlimited traps (no credits involved), every catch open, all 6 Don't-Tap game themes, and no ads.</p>
+  <ul class="yes">
+    <li><strong>Plans.</strong> PRO is sold as auto-renewing subscriptions and as a one-time <strong>Lifetime</strong> purchase. Lifetime is a single payment, is not a subscription and does not renew.</li>
+    <li><strong>The store's sheet is what counts.</strong> Plans, prices, billing periods and any free trial come from the App Store or Google Play and are shown to you in the purchase sheet before you confirm. Those are the terms of your purchase — not anything written here, and not a price you saw in a screenshot or a review.</li>
+    <li><strong>Free trial.</strong> Where a plan is offered with a free trial, the trial turns into a paid subscription at the shown price unless you cancel in time — on the App Store at least 24 hours before it ends, on Google Play any time before it ends. Not every user or region is offered a trial; if one is not available to you, the app does not advertise one.</li>
+    <li><strong>Auto-renewal.</strong> A subscription renews for the same period and price until you cancel. On the App Store you are charged within 24 hours before the current period ends, and you must cancel at least 24 hours before that. On Google Play you are charged when the new period starts, and you can cancel any time before then.</li>
+    <li><strong>Cancelling.</strong> Cancel in your store account — App Store: Settings &gt; your name &gt; Subscriptions; Google Play: Play Store &gt; profile &gt; Payments &amp; subscriptions. TapTrap also has a "Manage subscription" link that takes you there. Cancelling stops future renewals; you keep PRO until the end of the period you already paid for. <strong>Deleting the app does not cancel a subscription.</strong></li>
+    <li><strong>Restoring.</strong> Your purchase is tied to the App Store or Google Play account you bought it with. Use "Restore purchases" on a new or reinstalled device. Restore brings back PRO — it does not bring back trap credits, catches or images.</li>
+    <li><strong>Refunds.</strong> Apple and Google take the payment, so Apple and Google handle refunds under their own policies. We cannot issue a refund ourselves, and we cannot see your payment details.</li>
+    <li><strong>If PRO ends.</strong> When a subscription lapses or is refunded, the app goes back to the free tier: traps need credits again, premium game themes go back to Classic, and ads can be offered again. Catches you had already opened stay open.</li>
+  </ul>
+
+  <h2 id="en-ads">8 · Ads</h2>
+  <p>TapTrap 1.2 has <strong>one</strong> kind of ad: a rewarded video that you start yourself. There are no banners, no interstitials and no ad when you open the app.</p>
+  <ul class="yes">
+    <li><strong>Where an ad can appear:</strong> only after you tap a button offering one — when you are out of traps, in Settings under "Traps", or on a locked catch. The button always says what the video gives you before it starts.</li>
+    <li><strong>Where an ad can never appear:</strong> inside a running trap, on the way out of a trap, on the Caught-you screen, during the practice run, or at app launch &mdash; and never by itself on a result or a heatmap screen; the only ad reachable from a result is the one you start from a locked catch. Nothing is ever put on top of your fake screen.</li>
+    <li><strong>Close it early and you get nothing</strong> — and nothing is taken from you either. No credit is spent, the catch stays locked, and you can try again.</li>
+    <li><strong>Sometimes there is no ad.</strong> Ad fill is not guaranteed. When no video is available the button says so and does nothing; that is normal, not a fault.</li>
+    <li><strong>Content rating.</strong> Ads are served by Google AdMob and are requested at the "G" (general audiences) rating. We do not choose or review the individual ads. Settings has a "Report an ad" link if something arrives that should not have.</li>
+    <li><strong>Consent first.</strong> Before any ad is requested you go through Google's consent flow, and on iOS Apple's tracking prompt. If you say no, or ads are not allowed, the ad offers simply do not appear. In regions where it applies, Settings has an "Ad privacy choices" entry so you can change your answer later.</li>
+    <li><strong>PRO users see none of this</strong> — no ads, no consent form, no tracking prompt. With PRO the ads SDK is never even started.</li>
+  </ul>
+  <p>What data ads involve is a privacy question, and it is answered in the <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
+  <h2 id="en-pin">9 · Your PIN and your data</h2>
+  <ul class="yes">
+    <li><strong>Your PIN is not stored.</strong> The app keeps only a SHA-256 hash of it on the device. Nobody can read the PIN back out of TapTrap — not a snooper, not us.</li>
+    <li><strong>A forgotten PIN cannot be recovered.</strong> There is no reset code, no email recovery and no back door. "Forgot PIN" is the only way past it, and it wipes TapTrap: every catch, your fake-screen screenshot, your Caught-you image or video and settings, and the PIN itself. The app goes back to the start. This cannot be undone.</li>
+    <li><strong>"Reset all data"</strong> in Settings does the same wipe of catches, images and videos, Caught-you settings and PIN. It keeps your trap credits, your language, vibration and theme choice.</li>
+    <li><strong>Everything TapTrap saves, it saves on your phone.</strong> Catches, images and settings live in the app's own storage. Uninstalling TapTrap takes them all with it. We hold no copy and cannot restore anything for you, so keep your own copy of anything that matters to you.</li>
+  </ul>
+
+  <h2 id="en-ip">10 · Intellectual property</h2>
+  <p>TapTrap — its code, its design, its name and its icon — belongs to MNP. You get a personal, non-transferable licence to use the app on devices you own or control; nothing more is granted. Your screenshots, photos and the words you type into a Caught-you message stay yours. TapTrap keeps its copy on your device only so it can draw the fake screen.</p>
+
+  <h2 id="en-warranty">11 · No warranty</h2>
+  <p>TapTrap is provided "as is" and "as available", without warranties of any kind, express or implied, to the fullest extent the law allows. We do not promise that the app will run without interruption or error, that a trap will register every touch, that an ad will be available when you want one, or that what you see in a result means what you think it means.</p>
+  <p>Some countries do not allow these exclusions. Where that is the case, you keep whatever rights the law gives you and this section applies only as far as it legally can.</p>
+
+  <h2 id="en-liability">12 · Limitation of liability</h2>
+  <p>To the fullest extent the law allows, we are not liable for indirect, incidental or consequential loss; for lost data, lost catches or lost images; or for anything that follows from a decision you made because of what TapTrap showed you — including any conclusion you drew about another person. Where our liability cannot be excluded, it is limited to the amount you actually paid for TapTrap in the twelve months before the claim.</p>
+  <p>Nothing in these Terms limits liability for death or personal injury caused by negligence, for fraud, or for anything else that cannot lawfully be limited.</p>
+
+  <h2 id="en-changes">13 · Changes to these Terms</h2>
+  <p>We update these Terms when the app changes. The date at the top says when they were last updated, and the current version always lives at this address — TapTrap links to it from Settings and from the paywall. If you keep using the app after a change, that is your acceptance of it. A change will not retroactively take away something you already paid for.</p>
+
+  <h2 id="en-law">14 · Governing law</h2>
+  <p>These Terms are governed by the laws of the Republic of Türkiye, and the courts and enforcement offices of Türkiye have jurisdiction. If you use TapTrap as a consumer, this does not take away the protection of the mandatory consumer law of the country you live in, or your right to bring a claim before the authorities there.</p>
+
+  <h2 id="en-apple">15 · App Store: Apple's terms</h2>
+  <div class="box">
+    <p>If you got TapTrap from the App Store, the following applies and is required by Apple:</p>
+    <p>These Terms are between you and MNP only — <strong>not with Apple</strong>. Apple is not responsible for TapTrap or its content. The licence granted to you is a non-transferable licence to use TapTrap on any Apple-branded device you own or control, as permitted by the Usage Rules in the Apple Media Services Terms and Conditions.</p>
+    <p>Apple has no obligation to provide any maintenance or support for TapTrap. If TapTrap fails to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price of the app to you; to the maximum extent permitted by law, Apple has no other warranty obligation of any kind with respect to TapTrap.</p>
+    <p>We, not Apple, are responsible for addressing any claim of yours or of a third party relating to TapTrap, including product liability claims, any claim that TapTrap fails to conform to a legal or regulatory requirement, claims under consumer protection or similar legislation, and any claim that TapTrap infringes a third party's intellectual property rights.</p>
+    <p>You must comply with any applicable third-party terms of service when using TapTrap, and you confirm that you are not located in a country subject to a U.S. Government embargo or designated as a "terrorist supporting" country, and that you are not on any U.S. Government list of prohibited or restricted parties.</p>
+    <p><strong>Apple and Apple's subsidiaries are third-party beneficiaries of these Terms</strong>, and upon your acceptance of them Apple will have the right (and will be deemed to have accepted the right) to enforce them against you as a third-party beneficiary.</p>
+    <p>If you got TapTrap from Google Play: these Terms are between you and us. Google is not a party to them and is not responsible for TapTrap. Your purchases are also subject to the Google Play Terms of Service.</p>
+  </div>
+
+  <h2 id="en-contact">16 · Contact</h2>
+  <div class="contact">
+    <p>Questions about these Terms, about a purchase, or about something the app did — write to <a href="mailto:pekdemir.mn@gmail.com">pekdemir.mn@gmail.com</a>. One person reads that inbox, so please say which phone and which app version you are on.</p>
+  </div>
+
+  <!-- ─────────────────────────── TÜRKÇE ─────────────────────────── -->
+
+  <div lang="tr">
+  <h2 class="lang" id="tr">Türkçe</h2>
+  <p class="stamp">Son güncelleme <b>23 Eylül 2026</b> · TapTrap 1.2.0</p>
+
+  <nav class="langnav">
+    <a href="#en">English</a>
+    <a class="on" href="#tr">Türkçe</a>
+    <a href="privacy-policy.html">Gizlilik Politikası</a>
+  </nav>
+
+  <p>Bu koşullar, sizinle TapTrap'i geliştiren <strong>MNP</strong> ("biz") arasındaki sözleşmedir. TapTrap'i indirdiğinizde, açtığınızda veya kullandığınızda bu koşulları kabul etmiş olursunuz. Kabul etmiyorsanız uygulamayı kullanmayın.</p>
+
+  <div class="toc">
+    <ol>
+      <li><a href="#tr-nedir">TapTrap nedir</a></li>
+      <li><a href="#tr-degildir">TapTrap ne değildir</a></li>
+      <li><a href="#tr-kendi">Kendi telefonunuzda kullanın</a></li>
+      <li><a href="#tr-yasak">Yapmamayı kabul ettikleriniz</a></li>
+      <li><a href="#tr-hak">Tuzak hakları</a></li>
+      <li><a href="#tr-yakalama">Bir yakalamayı açmak</a></li>
+      <li><a href="#tr-pro">TapTrap PRO</a></li>
+      <li><a href="#tr-reklam">Reklamlar</a></li>
+      <li><a href="#tr-pin">PIN'iniz ve verileriniz</a></li>
+      <li><a href="#tr-fikri">Fikri mülkiyet</a></li>
+      <li><a href="#tr-garanti">Garanti yok</a></li>
+      <li><a href="#tr-sorumluluk">Sorumluluğun sınırı</a></li>
+      <li><a href="#tr-degisiklik">Koşullardaki değişiklikler</a></li>
+      <li><a href="#tr-hukuk">Uygulanacak hukuk</a></li>
+      <li><a href="#tr-apple">App Store: Apple'ın şartları</a></li>
+      <li><a href="#tr-iletisim">İletişim</a></li>
+    </ol>
+  </div>
+
+  <h2 id="tr-nedir">1 · TapTrap nedir</h2>
+  <p>TapTrap kendi telefonunuzu bir tuzağa çevirir. Kendi ana ekranınızın ekran görüntüsünü seçersiniz; uygulama o görüntüyü tam ekran gösterir. Telefonu eline alan biri, kilidi açık, sıradan bir ana ekran gördüğünü sanır. Sahte ekran açıkken TapTrap tek bir şey kaydeder: ekrana nereye ve ne zaman dokunulduğunu.</p>
+  <p>Tuzaktan gizli hareketle çıkarsınız — sol üst köşe, sağ üst köşe, tekrar sol üst köşe — ve ardından 4 haneli TapTrap PIN'inizle. Sonra yakalamayı görürsünüz: kaç dokunuş, ne kadar sürede ve dokunuşların nereye düştüğünü gösteren ısı haritası.</p>
+  <p>Uygulamada ayrıca Dokunma oyunu var; kendi temalarıyla küçük bir oyun. O bir oyundur, tuzak değil.</p>
+
+  <h2 id="tr-degildir">2 · TapTrap ne değildir</h2>
+  <p>Uygulamanın gösterdiğine güvenmeden önce şunları okuyun.</p>
+  <ul class="no">
+    <li><strong>Kimin dokunduğunu söyleyemez.</strong> TapTrap yalnızca kendi sahte ekranındaki dokunuşları kaydeder: koordinat ve zaman, başka hiçbir şey. Kamera yok, mikrofon yok, kimsenin fotoğrafı yok, isim yok.</li>
+    <li><strong>Kendi dışında hiçbir şey kaydetmez.</strong> Diğer uygulamalarınızı, mesajlarınızı, aramalarınızı, konumunuzu ya da tuzaktan önce veya sonra telefonda yapılanları görmez.</li>
+    <li><strong>Delil değildir.</strong> Tuzak bazı dokunuşları kaçırabilir; cepte ya da masada kendiliğinden dokunuş oluşabilir; biri telefonunuzu tuzak kapalıyken de karıştırabilir. Isı haritasını bir insan hakkında kanıt saymayın.</li>
+    <li><strong>Güvenlik ürünü değildir.</strong> Telefonunuzu kilitlemez, dosyalarınızı korumaz, kimseyi bir şey yapmaktan alıkoymaz. O iş telefonunuzun kendi kilit ekranının işidir; TapTrap onun yerini tutmaz.</li>
+  </ul>
+
+  <h2 id="tr-kendi">3 · Kendi telefonunuzda kullanın</h2>
+  <div class="rule">
+    <span class="flag">En önemli kural</span>
+    <p><strong>TapTrap, sahibi ve hâkimi olduğunuz, kurulumunu bizzat yaptığınız telefon içindir.</strong></p>
+    <p>TapTrap'i başkasının telefonuna kurmayın. Kontrolünüzde olmayan bir cihazda tuzak kurmayın. Uygulamayı, hukuka aykırı olduğu yerde ya da yasanın aradığı rıza olmadan başka birini izlemek, takip etmek veya kontrol etmek için kullanmayın. Buna eş veya eski eş, aile bireyi, ev arkadaşı, çalışan ve başkasının velayetindeki çocuk da dahildir.</p>
+    <p>TapTrap tek bir telefon hakkında tek bir soruya cevap verir: <em>benim telefonumu karıştıran oldu mu?</em> Uygulamayı başka bir insana çevirmek, tasarlandığı amacın dışındadır. Yine de yaparsanız bu koşulları ihlal etmiş olursunuz, sorumluluk tamamen size aittir ve bu işin bizimle bir ilgisi yoktur.</p>
+    <p>Aklınızdakinin bulunduğunuz yerde hukuka uygun olduğundan emin değilseniz — yapmayın.</p>
+  </div>
+  <p>Uygulamaya koyduğunuz görsellerden de siz sorumlusunuz. Yalnızca kullanma hakkınız olan bir ekran görüntüsü veya fotoğraf seçin; telefonu eline alan kişinin sahte ekran olarak seçtiğiniz görseli — ve ayarladıysanız isteğe bağlı "Yakalandın" görselini — göreceğini unutmayın.</p>
+
+  <h2 id="tr-yasak">4 · Yapmamayı kabul ettikleriniz</h2>
+  <ul class="no">
+    <li>TapTrap'i hukuka aykırı bir amaçla ya da başka birini taciz etmek, korkutmak veya izlemek için kullanmak.</li>
+    <li>Uygulamayı tersine mühendislikle çözmek, kaynak koduna döndürmek veya parçalarına ayırmak (yasanın açıkça izin verdiği hâller dışında).</li>
+    <li>TapTrap PIN'ini, tuzak haklarını, satın alma akışını veya reklamları atlatmaya çalışmak.</li>
+    <li>Uygulamayı veya bir parçasını satmak, kiralamak, alt lisanslamak ya da yeniden dağıtmak.</li>
+  </ul>
+  <p class="fine">Bulunduğunuz ülkede sözleşme yapabilecek yaşta olmanız ve kendi App Store veya Google Play hesabınızın bulunması gerekir. Değilseniz, sizden sorumlu bir yetişkinin bu koşulları sizin adınıza kabul etmesi gerekir.</p>
+
+  <h2 id="tr-hak">5 · Tuzak hakları</h2>
+  <p>TapTrap PRO'nuz yoksa tuzakları <strong>tuzak haklarıyla</strong> kurarsınız. Tam olarak şöyle işler:</p>
+  <ul class="yes">
+    <li>Bu sürüm ilk kez çalıştığında bir defaya mahsus <strong>2 hak</strong> verilir.</li>
+    <li><strong>Tuzak kurmak 1 hak harcar.</strong> Hak, tuzak başladığı anda düşer ve geri verilmez — kimsenin dokunmadığı bir tuzak da bir sonuçtur.</li>
+    <li><strong>Bir yakalamanın ısı haritasını açmak da 1 hak</strong> harcar (bir sonraki bölüme bakın).</li>
+    <li>Sonuna kadar izlemeyi <em>seçtiğiniz</em> her ödüllü video için <strong>1 hak kazanırsınız</strong>. Elinizde 3 hak varken uygulama video teklifini göstermeyi bırakır.</li>
+    <li>Dokunma oyunu, gizli çıkış provası ve tuzak önizlemesi hiçbir şey harcamaz.</li>
+  </ul>
+  <p>Tuzak hakları şunlar <strong>değildir</strong>:</p>
+  <ul class="no">
+    <li><strong>Para birimi değildir.</strong> Haklar para değildir, sanal para değildir, jeton değildir. Nakit karşılığı yoktur, hiçbir şeyle takas edilemez ve iade edilemez.</li>
+    <li><strong>Satın alınamaz.</strong> Bir hakkın fiyatı yoktur. TapTrap'teki hiçbir satın alma — ne abonelik ne Ömür Boyu — size hak vermez. PRO başka bir şey yapar: haklara olan ihtiyacı tamamen ortadan kaldırır.</li>
+    <li><strong>Süresi dolmaz.</strong> Elinizdeki hak, siz harcayana kadar durur.</li>
+    <li><strong>Yalnızca telefonunuzda yaşar.</strong> Haklar cihazdaki uygulama deposunda tutulur. App Store veya Google Play hesabınıza bağlı değildir, başka bir telefona taşınmaz ve "Satın alımları geri yükle" onları geri getirmez. TapTrap cihazdan silinirse haklar da gider.</li>
+    <li><strong>Haklarla ilgili hiçbir bilgi cihazdan çıkmaz.</strong> Bakiyenizi göremeyiz, artıramayız, eksiltemeyiz.</li>
+  </ul>
+  <p><strong>Reklam izlemek her zaman sizin tercihinizdir.</strong> Reklam kendiliğinden başlamaz: yalnızca karşılığında ne alacağınızı yazan bir düğmeye dokunduğunuzda oynar. Kurduğunuz bir tuzakla ilgili her şey — bir yakalama olduğunu, ne zaman olduğunu, tuzağın ne kadar açık kaldığını, kaç bölgede kaç dokunuş olduğunu görmek — ücretsizdir ve asla reklam istemez. Haklarınız biterse ve hiçbir şey izlemek istemiyorsanız, TapTrap PRO hak meselesini hayatınızdan tamamen çıkarır.</p>
+  <p class="fine">Ayarlar'daki "Tüm verileri sıfırla" yakalamalarınızı, görsel ve videolarınızı, Yakalandın ayarlarınızı ve PIN'inizi siler; ama elinizdeki tuzak haklarını almaz.</p>
+
+  <h2 id="tr-yakalama">6 · Bir yakalamayı açmak</h2>
+  <p>Her yakalamada şunlar ücretsizdir ve hep ücretsiz kalır: yakalamanın ne olduğu, tuzağın ne zaman kurulup ne zaman kapatıldığı, ilk ve son dokunuş, zaman çizelgesi ve kaç bölgede kaç dokunuş olduğu. Bu bilgiler asla kilitlenmez.</p>
+  <p>Açılan kısım <strong>ısı haritasıdır</strong> — dokunuşların ekranda tam olarak nereye düştüğünün resmi. Ücretsiz kullanıcıda bunu açmak ya <strong>1 tuzak hakkına</strong> ya da <strong>sonuna kadar izlenen bir ödüllü videoya</strong> mal olur (o video yalnızca o yakalamayı açar; hak eklemez, hak da harcamaz). Ücretsiz "ilk yakalama" yoktur: bu sürümde kaydedilen yakalama kilitli başlar.</p>
+  <ul class="yes">
+    <li><strong>Açılan yakalama kalıcı olarak açılır.</strong> Bir kez açıldıktan sonra açık kalır; tekrar açmak asla bir şeye mal olmaz.</li>
+    <li><strong>Videoyu erken kapatırsanız hiçbir şey olmaz.</strong> Bir şey harcanmaz, bir şey kazanılmaz; yakalama kilitli kalır ve tekrar deneyebilirsiniz.</li>
+    <li><strong>Hak boşa gitmez.</strong> Hak düşer ama yakalama bir şekilde açılamazsa, hak anında geri verilir ve uygulama bunu size söyler.</li>
+    <li><strong>Eski yakalamalar açık bırakıldı.</strong> TapTrap 1.2.0'a güncellediğinizde elinizde olan yakalamaların kilidi otomatik olarak açıldı — zaten görebildiğiniz bir kanıt sizden geri alınmaz.</li>
+    <li><strong>TapTrap PRO ile her yakalama açıktır</strong> ve hiçbir şey harcanmaz. PRO'nuz varken gerçekten baktığınız bir yakalama, PRO sonradan bitse bile açık kalır.</li>
+    <li>Geçmişi silmek ya da "Tüm verileri sıfırla" demek, hangi yakalamaların açık olduğunu unutturur — zaten o noktada yakalamaların kendisi de gitmiştir.</li>
+  </ul>
+
+  <h2 id="tr-pro">7 · TapTrap PRO</h2>
+  <p>TapTrap PRO ücretli yükseltmedir. Sınırsız tuzak (hak derdi yok), her yakalamanın açık olması, Dokunma oyununun 6 temasının tamamı ve reklamsız kullanım verir.</p>
+  <ul class="yes">
+    <li><strong>Planlar.</strong> PRO, otomatik yenilenen abonelikler ve tek seferlik <strong>Ömür Boyu</strong> satın alma olarak sunulur. Ömür Boyu tek ödemedir; abonelik değildir ve yenilenmez.</li>
+    <li><strong>Esas olan mağazanın ekranıdır.</strong> Planlar, fiyatlar, faturalama dönemleri ve varsa ücretsiz deneme App Store veya Google Play'den gelir ve onaylamadan önce satın alma ekranında size gösterilir. Sizin için geçerli koşullar onlardır — burada yazanlar ya da bir ekran görüntüsünde gördüğünüz fiyat değil.</li>
+    <li><strong>Ücretsiz deneme.</strong> Bir plan ücretsiz denemeyle sunuluyorsa, zamanında iptal etmezseniz deneme gösterilen fiyattan ücretli aboneliğe döner: App Store'da bitişten en az 24 saat önce, Google Play'de bitmeden herhangi bir an iptal edebilirsiniz. Deneme her kullanıcıya ve her bölgeye sunulmaz; size sunulmuyorsa uygulama deneme vaat etmez.</li>
+    <li><strong>Otomatik yenileme.</strong> Abonelik, siz iptal edene kadar aynı süre ve fiyatla yenilenir. App Store'da mevcut dönem bitmeden önceki 24 saat içinde ücret alınır ve en az 24 saat önce iptal etmeniz gerekir. Google Play'de ücret yeni dönem başlarken alınır; o ana kadar istediğiniz zaman iptal edebilirsiniz.</li>
+    <li><strong>İptal.</strong> Mağaza hesabınızdan iptal edin — App Store: Ayarlar &gt; adınız &gt; Abonelikler; Google Play: Play Store &gt; profil &gt; Ödemeler ve abonelikler. TapTrap'teki "Aboneliği yönet" bağlantısı da sizi oraya götürür. İptal, yalnızca sonraki yenilemeleri durdurur; ödediğiniz dönemin sonuna kadar PRO sizde kalır. <strong>Uygulamayı silmek aboneliği iptal etmez.</strong></li>
+    <li><strong>Geri yükleme.</strong> Satın alma, aldığınız App Store veya Google Play hesabına bağlıdır. Yeni ya da yeniden kurulmuş bir cihazda "Satın alımları geri yükle" deyin. Geri yükleme PRO'yu geri getirir; tuzak haklarını, yakalamaları veya görselleri geri getirmez.</li>
+    <li><strong>İadeler.</strong> Ödemeyi Apple ve Google alır; iadeyi de kendi politikalarına göre onlar yapar. Biz doğrudan iade veremeyiz ve ödeme bilgilerinizi göremeyiz.</li>
+    <li><strong>PRO biterse.</strong> Abonelik sona erdiğinde ya da iade edildiğinde uygulama ücretsiz kademeye döner: tuzaklar yine hak ister, ücretli oyun temaları Klasik'e döner ve reklam teklifleri yeniden görünebilir. Daha önce açtığınız yakalamalar açık kalır.</li>
+  </ul>
+
+  <h2 id="tr-reklam">8 · Reklamlar</h2>
+  <p>TapTrap 1.2'de <strong>tek</strong> tür reklam vardır: sizin başlattığınız ödüllü video. Banner yoktur, geçiş reklamı yoktur, uygulamayı açınca çıkan reklam yoktur.</p>
+  <ul class="yes">
+    <li><strong>Reklam nerede çıkabilir:</strong> yalnızca reklam teklif eden bir düğmeye dokunduğunuzda — tuzak haklarınız bittiğinde, Ayarlar'daki "Tuzak hakları" bölümünde ya da kilitli bir yakalamada. Düğme, video karşılığında ne alacağınızı başlamadan önce yazar.</li>
+    <li><strong>Reklam asla nerede çıkamaz:</strong> çalışan bir tuzağın içinde, tuzaktan çıkarken, Yakalandın ekranında, prova sırasında ve uygulama açılışında &mdash; bir sonuç ya da ısı haritası ekranında da kendiliğinden çıkmaz; bir sonuçtan ulaşılabilen tek reklam, kilitli bir yakalamada sizin başlattığınız reklamdır. Sahte ekranınızın üzerine hiçbir şey konmaz.</li>
+    <li><strong>Erken kapatırsanız ödül yoktur</strong> — ama sizden de bir şey alınmaz. Hak düşmez, yakalama kilitli kalır, tekrar deneyebilirsiniz.</li>
+    <li><strong>Bazen reklam bulunmaz.</strong> Reklam gelmesi garanti değildir. Video yoksa düğme bunu yazar ve hiçbir şey olmaz; bu bir arıza değildir.</li>
+    <li><strong>İçerik derecesi.</strong> Reklamlar Google AdMob tarafından sunulur ve "G" (genel izleyici) derecesiyle istenir. Tek tek reklamları biz seçmiyor ve incelemiyoruz. Çıkmaması gereken bir şey çıkarsa Ayarlar'da "Bir reklamı bildir" bağlantısı var.</li>
+    <li><strong>Önce onay.</strong> Herhangi bir reklam istenmeden önce Google'ın onay akışından, iOS'ta ayrıca Apple'ın izleme izni ekranından geçersiniz. Hayır derseniz ya da reklama izin yoksa reklam teklifleri hiç görünmez. Geçerli olduğu bölgelerde Ayarlar'da "Reklam gizlilik seçenekleri" girişi bulunur; cevabınızı sonradan değiştirebilirsiniz.</li>
+    <li><strong>PRO kullanıcıları bunların hiçbirini görmez</strong> — reklam yok, onay formu yok, izleme izni yok. PRO'da reklam SDK'sı hiç başlatılmaz.</li>
+  </ul>
+  <p>Reklamların hangi veriyle ilgisi olduğu bir gizlilik sorusudur ve cevabı <a href="privacy-policy.html">Gizlilik Politikası</a>'ndadır.</p>
+
+  <h2 id="tr-pin">9 · PIN'iniz ve verileriniz</h2>
+  <ul class="yes">
+    <li><strong>PIN'iniz saklanmaz.</strong> Uygulama cihazda yalnızca PIN'in SHA-256 özetini tutar. TapTrap'ten PIN'i kimse geri okuyamaz — ne telefonunuzu karıştıran biri, ne biz.</li>
+    <li><strong>Unutulan PIN geri getirilemez.</strong> Sıfırlama kodu, e-posta ile kurtarma ya da arka kapı yoktur. "PIN'imi unuttum" tek yoldur ve TapTrap'i siler: tüm yakalamalar, sahte ekran görüntünüz, Yakalandın görseliniz veya videonuz ve ayarlarınız, PIN'in kendisi. Uygulama en baştan başlar. Bu işlem geri alınamaz.</li>
+    <li><strong>Ayarlar'daki "Tüm verileri sıfırla"</strong> aynı silmeyi yapar: yakalamalar, görsel ve videolar, Yakalandın ayarları ve PIN. Tuzak haklarınızı, dilinizi, titreşim ve tema tercihinizi korur.</li>
+    <li><strong>TapTrap ne kaydediyorsa telefonunuza kaydeder.</strong> Yakalamalar, görseller ve ayarlar uygulamanın kendi deposundadır. TapTrap'i kaldırdığınızda hepsi onunla birlikte gider. Bizde kopyası yoktur, sizin için hiçbir şeyi geri getiremeyiz; sizin için önemli olanın kendi kopyasını saklayın.</li>
+  </ul>
+
+  <h2 id="tr-fikri">10 · Fikri mülkiyet</h2>
+  <p>TapTrap — kodu, tasarımı, adı ve simgesi — MNP'ye aittir. Size, sahibi veya hâkimi olduğunuz cihazlarda uygulamayı kullanmanız için kişisel ve devredilemez bir lisans verilir; bundan fazlası verilmez. Ekran görüntüleriniz, fotoğraflarınız ve Yakalandın mesajına yazdığınız sözler sizindir. TapTrap kendi kopyasını yalnızca sahte ekranı çizebilmek için cihazınızda tutar.</p>
+
+  <h2 id="tr-garanti">11 · Garanti yok</h2>
+  <p>TapTrap, hukukun izin verdiği en geniş ölçüde, "olduğu gibi" ve "mevcut hâliyle", açık ya da örtülü hiçbir garanti verilmeksizin sunulur. Uygulamanın kesintisiz veya hatasız çalışacağını, bir tuzağın her dokunuşu kaydedeceğini, istediğiniz anda reklam bulunacağını ya da bir sonucun sizin anladığınız anlama geleceğini taahhüt etmiyoruz.</p>
+  <p>Bazı ülkeler bu tür sınırlamalara izin vermez. Öyle bir yerdeyseniz, yasanın size tanıdığı haklar aynen geçerlidir ve bu bölüm yalnızca hukuken mümkün olduğu ölçüde uygulanır.</p>
+
+  <h2 id="tr-sorumluluk">12 · Sorumluluğun sınırı</h2>
+  <p>Hukukun izin verdiği en geniş ölçüde; dolaylı, arızi veya sonuç niteliğindeki zararlardan, kaybolan verilerden, yakalamalardan ya da görsellerden ve TapTrap'in size gösterdiğine dayanarak verdiğiniz bir karardan doğan sonuçlardan — başka bir insan hakkında vardığınız kanaat dahil — sorumlu değiliz. Sorumluluğumuzun kaldırılamadığı hâllerde, sorumluluk talebin doğmasından önceki on iki ayda TapTrap için fiilen ödediğiniz tutarla sınırlıdır.</p>
+  <p>Bu koşullardaki hiçbir hüküm; ihmalden kaynaklanan ölüm veya bedensel zarara, hileye ya da hukuken sınırlanamayan diğer hâllere ilişkin sorumluluğu sınırlamaz.</p>
+
+  <h2 id="tr-degisiklik">13 · Koşullardaki değişiklikler</h2>
+  <p>Uygulama değiştikçe bu koşulları da güncelliyoruz. En üstteki tarih, koşulların en son ne zaman güncellendiğini söyler; güncel metin her zaman bu adreste durur ve TapTrap buraya Ayarlar'dan ve ödeme ekranından bağlanır. Bir değişiklikten sonra uygulamayı kullanmaya devam etmeniz, değişikliği kabul ettiğiniz anlamına gelir. Bir değişiklik, zaten ödemesini yaptığınız bir şeyi geriye dönük olarak elinizden almaz.</p>
+
+  <h2 id="tr-hukuk">14 · Uygulanacak hukuk</h2>
+  <p>Bu koşullara Türkiye Cumhuriyeti hukuku uygulanır; Türkiye mahkemeleri ve icra daireleri yetkilidir. TapTrap'i tüketici olarak kullanıyorsanız bu hüküm, yaşadığınız ülkenin emredici tüketici mevzuatının size sağladığı korumayı ve oradaki mercilere başvurma hakkınızı ortadan kaldırmaz. Türkiye'de tüketici hakem heyetlerine ve tüketici mahkemelerine başvurma hakkınız saklıdır.</p>
+
+  <h2 id="tr-apple">15 · App Store: Apple'ın şartları</h2>
+  <div class="box">
+    <p>TapTrap'i App Store'dan aldıysanız, Apple'ın zorunlu tuttuğu şu hükümler geçerlidir:</p>
+    <p>Bu koşullar yalnızca sizinle MNP arasındadır; <strong>Apple taraf değildir</strong>. Apple, TapTrap'ten veya içeriğinden sorumlu değildir. Size verilen lisans, Apple Media Services Şartları'ndaki Kullanım Kuralları çerçevesinde, sahibi veya hâkimi olduğunuz Apple markalı cihazlarda TapTrap'i kullanmanız için devredilemez bir lisanstır.</p>
+    <p>Apple'ın TapTrap için herhangi bir bakım veya destek sağlama yükümlülüğü yoktur. TapTrap geçerli bir garantiye uygun değilse durumu Apple'a bildirebilirsiniz; Apple uygulamanın satın alma bedelini size iade eder. Yasanın izin verdiği azami ölçüde Apple'ın TapTrap'e ilişkin başka hiçbir garanti yükümlülüğü yoktur.</p>
+    <p>TapTrap'e ilişkin sizin veya üçüncü bir kişinin ileri süreceği taleplerden Apple değil biz sorumluyuz; buna ürün sorumluluğu talepleri, uygulamanın yasal veya düzenleyici bir gerekliliği karşılamadığı iddiaları, tüketicinin korunmasına ilişkin mevzuattan doğan talepler ve uygulamanın üçüncü bir kişinin fikri mülkiyet haklarını ihlal ettiği iddiaları dahildir.</p>
+    <p>TapTrap'i kullanırken geçerli üçüncü taraf hizmet şartlarına uymanız gerekir. Ayrıca, ABD hükümetince ambargo uygulanan veya "terörü destekleyen" olarak tanımlanan bir ülkede bulunmadığınızı ve ABD hükümetinin yasaklı ya da kısıtlı taraflar listelerinde yer almadığınızı beyan edersiniz.</p>
+    <p><strong>Apple ve bağlı şirketleri bu koşulların üçüncü taraf lehtarıdır</strong>; koşulları kabul etmenizle birlikte Apple, üçüncü taraf lehtar sıfatıyla bu koşulları size karşı ileri sürme hakkına sahip olur (ve bu hakkı kabul etmiş sayılır).</p>
+    <p>TapTrap'i Google Play'den aldıysanız: bu koşullar sizinle bizim aramızdadır. Google taraf değildir ve TapTrap'ten sorumlu değildir. Satın alımlarınız ayrıca Google Play Hizmet Şartları'na tabidir.</p>
+  </div>
+
+  <h2 id="tr-iletisim">16 · İletişim</h2>
+  <div class="contact">
+    <p>Bu koşullar, bir satın alma ya da uygulamanın yaptığı bir şey hakkında sorunuz varsa <a href="mailto:pekdemir.mn@gmail.com">pekdemir.mn@gmail.com</a> adresine yazın. Bu kutuyu tek bir kişi okuyor; lütfen hangi telefonda ve hangi uygulama sürümünde olduğunuzu yazın.</p>
+  </div>
+
+  <a class="top" href="#en">↑ English</a>
+  </div>
+
+  <footer>
+    <p>TapTrap 1.2.0 · © 2026 MNP · <a href="privacy-policy.html">Privacy Policy / Gizlilik Politikası</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

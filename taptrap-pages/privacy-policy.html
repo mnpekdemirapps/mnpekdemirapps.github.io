@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>TapTrap — Privacy Policy</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: #07080A;
+    color: #A3A9B2;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .heat-bar {
+    height: 3px;
+    background: linear-gradient(90deg, #4A8DFF 0%, #7B83F7 25%, #C77DD0 50%, #FFA24A 75%, #FF453A 100%);
+  }
+  .wrap {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 20px calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+  header { padding: 40px 0 8px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: #8A919B; margin: 0 0 14px;
+  }
+  .eyebrow::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: #FF453A; box-shadow: 0 0 10px rgba(255,69,58,.8);
+  }
+  h1 {
+    color: #F4F5F7; font-size: clamp(30px, 7vw, 40px); line-height: 1.12;
+    letter-spacing: -0.02em; margin: 0 0 10px; font-weight: 700;
+  }
+  .meta { color: #8A919B; font-size: 14px; margin: 0 0 6px; }
+  .meta strong { color: #A3A9B2; font-weight: 600; }
+
+  nav { margin: 26px 0 8px; }
+  nav .nav-label {
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: #8A919B; margin: 0 0 10px;
+  }
+  nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+  nav a {
+    display: inline-block; padding: 6px 12px; border-radius: 999px;
+    background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.08);
+    color: #A3A9B2; text-decoration: none; font-size: 13.5px; line-height: 1.4;
+  }
+  nav a:hover { color: #F4F5F7; border-color: rgba(255,255,255,.2); }
+  nav a.tr-jump { color: #FFBE7F; border-color: rgba(255,162,74,.35); background: rgba(255,162,74,.09); }
+
+  h2 {
+    color: #F4F5F7; font-size: 21px; line-height: 1.25; letter-spacing: -0.01em;
+    font-weight: 700; margin: 46px 0 14px; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    scroll-margin-top: 16px;
+  }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  h3 {
+    color: #F4F5F7; font-size: 16px; font-weight: 600; margin: 26px 0 8px;
+  }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 9px; }
+  li::marker { color: #6E757E; }
+  strong { color: #F4F5F7; font-weight: 600; }
+  a { color: #8FB8FF; text-underline-offset: 2px; }
+  a:hover { color: #C7DCFF; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.87em; background: rgba(255,255,255,.06); border-radius: 5px;
+    padding: 1.5px 6px; color: #C6CCD4; word-break: break-word;
+  }
+
+  .lead {
+    background: linear-gradient(180deg, #14171B, #101215);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px; padding: 20px 20px 8px; margin: 28px 0 0;
+  }
+  .lead p:first-child { margin-top: 0; }
+  .lead .title { color: #F4F5F7; font-weight: 700; font-size: 17px; margin-bottom: 10px; }
+
+  .callout {
+    border-left: 3px solid #FF453A;
+    background: rgba(255,69,58,.06);
+    border-radius: 0 12px 12px 0;
+    padding: 14px 16px 2px; margin: 18px 0 20px;
+  }
+  .callout.blue { border-left-color: #4A8DFF; background: rgba(74,141,255,.07); }
+  .callout.amber { border-left-color: #FFA24A; background: rgba(255,162,74,.07); }
+
+  .steps { counter-reset: s; list-style: none; padding-left: 0; }
+  .steps li {
+    counter-increment: s; position: relative; padding-left: 40px; margin-bottom: 14px;
+  }
+  .steps li::before {
+    content: counter(s);
+    position: absolute; left: 0; top: 1px;
+    width: 26px; height: 26px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #07080A;
+    background: linear-gradient(140deg, #FFA24A, #FF453A);
+  }
+
+  .table-scroll { overflow-x: auto; margin: 0 0 18px; -webkit-overflow-scrolling: touch; }
+  table { border-collapse: collapse; width: 100%; min-width: 440px; font-size: 14.5px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.07); vertical-align: top; }
+  th { color: #F4F5F7; font-weight: 600; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+  td:first-child { color: #D6DAE0; }
+
+  .lang-split {
+    margin: 64px 0 0; padding: 34px 0 0;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+  .lang-split h2 {
+    border-top: 0; padding-top: 0; margin-top: 0;
+    font-size: 27px;
+    background: linear-gradient(90deg, #FFA24A, #FF453A);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    display: inline-block;
+  }
+  .backlink { font-size: 14px; margin: 0 0 26px; }
+
+  footer {
+    margin-top: 54px; padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    color: #6E757E; font-size: 13.5px;
+  }
+  @media (max-width: 480px) {
+    body { font-size: 15.5px; }
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    header { padding-top: 30px; }
+    h2 { font-size: 19px; margin-top: 38px; }
+  }
+</style>
+</head>
+<body>
+<div class="heat-bar"></div>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">TapTrap</p>
+  <h1>Privacy Policy</h1>
+  <p class="meta"><strong>Last updated:</strong> 23 September 2026 &middot; applies to TapTrap 1.2.0 on iPhone and Android.</p>
+  <p class="meta"><strong>Who is responsible:</strong> TapTrap is published by <strong>MNP</strong>, which decides what the app records and is the data controller for the little it handles. Contact: <a href="mailto:pekdemir.mn@gmail.com">pekdemir.mn@gmail.com</a>.</p>
+</header>
+
+<div class="lead">
+  <p class="title">What makes TapTrap different from most apps</p>
+  <p>There is no account and no sign-in. There is no TapTrap server — we do not run one. The screenshot you pick, tap records, heatmaps, Caught-you media, profiles and PIN are stored on your own phone. We never receive them. If you choose Share result, the app creates a PNG report and opens your device’s share sheet; the app or recipient you select receives that report. The screenshot is hidden by default and sharing never starts automatically.</p>
+</div>
+
+<nav>
+  <p class="nav-label">Jump to</p>
+  <ul>
+    <li><a href="#short">In short</a></li>
+    <li><a href="#device">On your device</a></li>
+    <li><a href="#photos">Photos &amp; camera</a></li>
+    <li><a href="#pin">Your PIN</a></li>
+    <li><a href="#credits">Trap credits</a></li>
+    <li><a href="#catches">Opening a catch</a></li>
+    <li><a href="#ads">Ads</a></li>
+    <li><a href="#consent">Consent &amp; tracking</a></li>
+    <li><a href="#identifiers">Ad identifiers</a></li>
+    <li><a href="#purchases">Purchases</a></li>
+    <li><a href="#permissions">Permissions</a></li>
+    <li><a href="#children">Children</a></li>
+    <li><a href="#never">What we never see</a></li>
+    <li><a href="#deletion">Keeping &amp; deleting</a></li>
+    <li><a href="#rights">Your rights</a></li>
+    <li><a href="#changes">Changes</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="tr-jump" href="#tr">Türkçe &darr;</a></li>
+  </ul>
+</nav>
+
+<h2 id="short">In short</h2>
+<ul>
+  <li>Trap records stay on your phone unless you deliberately export a result through the device’s share sheet.</li>
+  <li>The app reads your photo library only when you pick an image, and it uses the camera in exactly one optional place.</li>
+  <li>The only ads are rewarded videos. You start every one of them yourself. There are no banners, no interstitials and no ad at launch.</li>
+  <li>Before the very first ad request, the app shows Google's consent form where it is required, then, on iPhone, asks for tracking permission.</li>
+  <li><strong>TapTrap PRO sees no ads, no consent form and no tracking prompt.</strong> For PRO the ads SDK is never even started.</li>
+  <li>Purchases go through Apple or Google. RevenueCat checks them under a random, anonymous ID. We never see your payment details.</li>
+  <li>There is no analytics SDK, no crash reporting of ours, and no network call of our own.</li>
+</ul>
+
+<h2 id="device">What stays on your device, and where</h2>
+<p>TapTrap writes two kinds of things to your phone: small values in the system's app preferences storage, and image and selected video files in the app's own private documents folder. Both are private to the app. We cannot read either.</p>
+
+<h3>In the app preferences</h3>
+<ul>
+  <li><strong>Your catches and Don't-Tap games</strong> (<code>tap_sessions</code>) — for each one: when the trap was armed and ended, the x/y position and the time of every tap, the screen size it was armed on, the file name of the screenshot it used, whether and when the Caught-you screen appeared and how many times that screen itself was touched, plus a random id for the catch, whether it was a trap or a game, and the game&rsquo;s look. The corner taps you make to end a trap are taken back out of the record when you leave it, so they never look like someone else&rsquo;s. Nothing else is recorded. TapTrap does not know <em>who</em> tapped.</li>
+  <li><strong>The trap that is running right now</strong> (<code>active_session</code>) — written at most once a second so that a catch survives the system killing the app. It is cleared when the trap ends.</li>
+  <li><strong>Your TapTrap PIN</strong> (<code>pin_code</code>) — a one-way SHA-256 hash, never the digits themselves.</li>
+  <li><strong>Your trap credits</strong> (<code>trap_credits_v1</code>) — a single number.</li>
+  <li><strong>Which catches you have opened</strong> (<code>unlocked_catches_v1</code>) — a list of catch IDs.</li>
+  <li><strong>Named trap profiles</strong> (<code>trap_profiles_v1</code>) — names you enter, setup choices and references to local media. Unsaved setup edits are held in memory and are discarded if the app closes before Save.</li>
+  <li><strong>Your Caught-you settings</strong> — on or off, your own message or the ready-made one you picked, its look, how many taps it waits for, and whether it buzzes.</li>
+  <li><strong>Preferences</strong> — language, game theme, vibration, whether the onboarding and the secret-exit practice are done, and how many catches you have already seen.</li>
+  <li><strong>A few internal flags and file names</strong> — the file names of the images and optional video below, whether the one-time unlock migration has run, whether your PIN has been confirmed on this version, and a marker that lets the app recover an image pick the system interrupted. None of them describes you or anything you did.</li>
+</ul>
+
+<h3>In the app's documents folder</h3>
+<ul>
+  <li><strong>Your fake-screen screenshot</strong> (<code>custom_bg_…</code>) — a copy of the image you picked, scaled down to at most 2200×4400 pixels.</li>
+  <li><strong>Your Caught-you image</strong> (<code>reveal_img_…</code>), if you set one, the same way.</li>
+  <li><strong>Your Caught-you video</strong> (<code>reveal_video_…</code>), if selected, a local copy of your gallery video, up to 2 minutes and 100 MB. It loops when the reveal appears; sound is optional and off by default. The app does not record video or use the microphone.</li>
+  <li>Older versions also copied a screenshot per catch (<code>session_bg_…</code>); those copies still work and are deleted once no catch refers to them.</li>
+</ul>
+
+<h2 id="photos">Photos and camera</h2>
+<p><strong>The fake screen is always picked from your photo library.</strong> The camera is never offered for it — a photo cannot be a screenshot of your home screen.</p>
+<p><strong>The optional Caught-you image</strong> is the one place where TapTrap can use the camera. When you choose that image, the app asks "Take a photo" or "Choose from gallery"; only the first opens the camera. That is the only camera use in the whole app.</p>
+<p>Only the single image you pick or take is copied into the app's folder. TapTrap never browses, scans, indexes or uploads your photo library, never uses the microphone, and never turns on the camera while a trap is running.</p>
+<p>On Android the app declares no camera permission and no photo-library permission: image picking goes through the system picker and the system camera app, which hand back one file.</p>
+
+<h2 id="sharing">Sharing a result</h2>
+<p>Sharing requires PIN verification and a separate press of Share on the report preview. The PNG contains the result date, tap count, optional profile name and, for an unlocked catch, its heatmap. The background screenshot is hidden by default; you can choose to include it. Locked heatmaps are never included. Reports are created in the app’s temporary cache so the selected recipient can read them; reports older than one hour are cleaned when another report is exported, and the operating system may clear the cache. Recipients and services you choose have their own handling and retention rules.</p>
+
+<h2 id="pin">Your PIN, and forgetting it</h2>
+<p>The 4-digit TapTrap PIN ends a running trap and guards your catches. What is saved is a SHA-256 hash of the PIN, not the PIN — so the stored value cannot simply be read back as your digits. After 5 wrong entries the keypad locks for 30 seconds; the attempt count and lockout deadline are stored locally and survive a relaunch.</p>
+<p><strong>A forgotten PIN cannot be recovered by us or by anyone else.</strong> "Forgot PIN?" therefore does the only thing it can: it wipes everything that "Reset all data" wipes (see <a href="#deletion">Keeping and deleting</a>) and returns you to the onboarding.</p>
+
+<h2 id="credits">Trap credits: how you get them, what they cost</h2>
+<ul>
+  <li><strong>2 credits are granted once</strong>, the first time this version runs — for everyone, new installs and updates alike.</li>
+  <li><strong>One credit arms one stealth trap.</strong> It is spent when the trap starts, and there is no refund: an untouched trap is a result too. Don't-Tap games and the secret-exit practice never cost anything.</li>
+  <li><strong>One credit opens one locked catch</strong> (see below).</li>
+  <li><strong>You earn one credit by watching a rewarded video to the end.</strong> The offer is hidden once you hold 3 credits, but a reward you have already earned is always paid, so the balance can go above 3.</li>
+  <li><strong>Credits cannot be bought for money</strong> — no purchase adds credits. They never expire, and there is no timer on them.</li>
+  <li>The balance is a single number on your phone. Nothing about it leaves the device. The welcome grant is written once for every install, PRO or not, but PRO never spends or earns a credit.</li>
+</ul>
+
+<h2 id="catches">Opening a catch</h2>
+<p>A catch's <strong>evidence is always free</strong>: its title, when the trap ran and for how long, the first and last tap, the timeline, and the taps · zones summary. You see all of that without paying or watching anything.</p>
+<p><strong>The heatmap</strong> — where exactly on your screenshot the fingers landed — is the part that is locked on a new catch. You can open it in one of three ways:</p>
+<ul>
+  <li>spend <strong>1 trap credit</strong>; or</li>
+  <li>watch <strong>one rewarded video</strong>, which opens that catch and neither adds nor spends a credit; or</li>
+  <li>have <strong>TapTrap PRO</strong>, which opens every catch without spending anything.</li>
+</ul>
+<p>An unlock is permanent and per catch: once opened, that heatmap stays open on every later visit.</p>
+<div class="callout blue">
+  <p><strong>If the unlock does not work, you are not charged.</strong> Close the video early and the catch simply stays locked — no credit is added or taken. In the rare case where a credit was spent but the unlock could not be saved, the credit is handed straight back and the app tells you so.</p>
+</div>
+<p><strong>If you already had catches from an older version</strong>, they are never locked away. The first time version 1.2.0 runs, every catch that already existed is marked open for good. A Don't-Tap game result is not a catch and is never locked.</p>
+<p>A locked catch shows your screenshot blurred with <em>no</em> heat drawn on it at all — not even a faint shape. Nothing about the taps leaks before you open it.</p>
+
+<h2 id="ads">Ads</h2>
+<p>The only ads in TapTrap are <strong>rewarded videos from Google AdMob</strong> (the Google Mobile Ads SDK). There are no banner ads, no interstitials, no app-open ads and no native ads anywhere in the app.</p>
+<p><strong>Every ad is started by you</strong>, from one of three places:</p>
+<ul>
+  <li>the "You're out of traps" sheet, when you tap Start with no credit left;</li>
+  <li>"Get a free trap" under Settings &rarr; Traps;</li>
+  <li>the "Open this catch" sheet on a locked catch.</li>
+</ul>
+<p><strong>An ad can never appear:</strong> at launch or on the splash screen, during the onboarding, while a trap or the practice run is on screen, on the secret-exit or PIN screen, or on its own on a result. Nothing in TapTrap plays an ad you did not ask for.</p>
+<p>Ad content is capped at the <strong>"G" (general audiences)</strong> rating, which the app sets on the ads SDK the moment it starts.</p>
+<p><strong>If you close the video early, you get nothing</strong> — no credit is added and the catch stays locked. The reward is recorded the instant Google reports it, so it survives the app being killed on the ad's end card.</p>
+<p>Earlier versions behaved differently: up to 1.1.x, free users also saw a full-screen ad after a Don't-Tap game, and there was no consent form. Update to 1.2.0 for the behaviour described here. If you are still on 1.1.1, the policy that describes <em>that</em> release is kept at <a href="https://mnpekdemir.github.io/taptrap-pages/1.1.1/privacy-policy.html">https://mnpekdemir.github.io/taptrap-pages/1.1.1/privacy-policy.html</a> (its terms are alongside it).</p>
+
+<h2 id="consent">Consent and tracking permission</h2>
+<p>For free users, the ads SDK is started only after the steps below, and only after they allow it. They run from the Home screen — on its first frame and when Home comes back to the foreground — and never on the splash screen, never during the onboarding, and never over a running trap. If you are in a trap when they would run, they wait until Home is on top again.</p>
+<ol class="steps">
+  <li><strong>Google asks its consent SDK what applies to you</strong> (the User Messaging Platform, UMP). If this step fails — you are offline, for example — the next two are skipped this time and the app falls back to a choice you made in an earlier session.</li>
+  <li><strong>The consent form, where it is required.</strong> In the European Economic Area, the United Kingdom, Switzerland and other regions where Google requires it, you can accept, reject, or choose purposes and ad partners under the IAB Transparency &amp; Consent Framework. Your choice is stored on your device by Google's consent SDK and sent with ad requests.</li>
+  <li><strong>App Tracking Transparency, on iPhone only.</strong> If you have never answered it, iOS then asks whether TapTrap may track you. Google's own explainer screen may appear just before the system prompt.</li>
+  <li><strong>Only then</strong>, if Google's SDK says ad requests are allowed, does the app start the Mobile Ads SDK, set the G content cap and load one rewarded ad. <code>MobileAds.initialize</code> is never called before this point.</li>
+</ol>
+<div class="callout">
+  <p><strong>TapTrap PRO skips all of it.</strong> If PRO is active, none of the four steps runs: no consent form, no tracking prompt, and the Google Mobile Ads SDK is never initialised at all. (If a subscription lapses, the steps run the next time you are on Home.)</p>
+</div>
+<p><strong>Changing your mind:</strong> where Google requires a permanent entry point, <em>Settings &rarr; Traps &rarr; Ad privacy choices</em> reopens the consent form at any time. On iPhone you can allow or revoke tracking under <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>. On Android you can reset or delete your advertising ID and opt out of ad personalisation under <em>Settings &rarr; Google &rarr; Ads</em>. TapTrap works exactly the same either way.</p>
+<p><em>Settings &rarr; Traps &rarr; Report an ad</em> opens an email to us. We receive only what you choose to write in it.</p>
+
+<h2 id="identifiers">Advertising identifiers, and what Google receives</h2>
+<p>When — and only when — ads are enabled for you, Google's SDK works with a per-device advertising identifier:</p>
+<ul>
+  <li><strong>iPhone:</strong> the Identifier for Advertisers (IDFA), used only if you allowed tracking. The app also lists Apple's SKAdNetwork identifiers, which let Apple measure ad campaigns without identifying you.</li>
+  <li><strong>Android:</strong> the Google Advertising ID. The Google Mobile Ads library adds the <code>com.google.android.gms.permission.AD_ID</code> permission to the app, together with the Android Privacy Sandbox permissions <code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code> and <code>ACCESS_ADSERVICES_TOPICS</code>. Your device's own ad settings still apply.</li>
+</ul>
+<p>Google's own privacy manifest for the Mobile Ads SDK declares that it collects: the device identifier, advertising data, product interaction, coarse location derived from the network, and diagnostics such as crash and performance data. In practice that also means your IP address, device model, operating system version, language, screen size, and the app's name and version.</p>
+<p>This data is collected by <strong>Google, not by us</strong>. We never receive it, and we cannot see who watched an ad. Google uses it to serve and measure ads, to prevent fraud and, where you allow it, to personalise ads. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>, <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a> and <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's advertising technologies</a>.</p>
+
+<h2 id="purchases">Purchases</h2>
+<p>TapTrap PRO is sold as a monthly or yearly auto-renewing subscription, or as a one-time Lifetime purchase. <strong>Payment is handled entirely by the Apple App Store or Google Play</strong>, under your own Apple or Google account and their terms. We never see your card, your billing address or your store account.</p>
+<p>TapTrap uses <strong>RevenueCat</strong> to check a purchase and to know whether PRO is active on this device. RevenueCat gives your installation a <strong>random, anonymous App User ID</strong> — the app never sets one, never supplies your email, and never links a purchase to a name or an account. RevenueCat receives the store receipt or purchase token, your TapTrap purchase and subscription history, and basic technical data such as device model, OS version, app version and IP address. See <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's Privacy Policy</a>.</p>
+<p>What we can see in our own dashboards is a purchase against an anonymous ID: which plan, whether it is active, whether it was refunded. Nothing that identifies you, and nothing at all about your traps.</p>
+<p>"Restore purchases" and "Manage subscription" in Settings ask the store and RevenueCat about that same anonymous record.</p>
+
+<h2 id="permissions">Permissions the app asks for</h2>
+<h3>iPhone</h3>
+<p>TapTrap declares exactly three permission prompts, and no others — no microphone, no location, no contacts, no health, no calendar:</p>
+<div class="table-scroll">
+<table>
+  <tr><th>Prompt</th><th>Why</th></tr>
+  <tr><td>Photo library</td><td>So you can pick the screenshot for the fake screen, or an image for the optional Caught-you screen.</td></tr>
+  <tr><td>Camera</td><td>Only if you choose "Take a photo" for the Caught-you image.</td></tr>
+  <tr><td>Tracking (ATT)</td><td>Only for free users, only in the consent flow above, and only to show more relevant ads.</td></tr>
+</table>
+</div>
+<h3>Android</h3>
+<p>The app itself declares only the Google Play billing permission. The final manifest of the shipped 1.2.0 build also contains permissions merged in by the libraries it bundles: <code>INTERNET</code> and <code>ACCESS_NETWORK_STATE</code>, the advertising-ID and Privacy Sandbox permissions listed above, <code>WAKE_LOCK</code> and <code>FOREGROUND_SERVICE</code> from Google Play services, and one signature-level permission the app defines and grants only to itself, so that its own components can talk to each other. None of these is a runtime permission, and none of them gives TapTrap access to your photos, camera, microphone, location or contacts.</p>
+
+<h2 id="children">Children</h2>
+<p>TapTrap is not designed for or directed at children, and we do not knowingly collect personal information from children. Ad content is capped at the "G" rating, so the ads that can be shown are suitable for general audiences. If you believe a child has used the app on your device, resetting all data (below) removes everything it stored.</p>
+
+<h2 id="never">What we can never see</h2>
+<p>Because nothing is uploaded, these are simply not things we hold:</p>
+<ul>
+  <li>your screenshot, your Caught-you image and your Caught-you message;</li>
+  <li>where, when or how often anyone tapped — any tap, any catch, any heatmap;</li>
+  <li>your PIN, in any form;</li>
+  <li>your credit balance, which catches you opened, your language and your settings;</li>
+  <li>who used your phone, or what they were looking for.</li>
+</ul>
+<p>TapTrap also never reads your messages, keystrokes, notifications, contacts, location or other apps. The trap is one static image of your own screenshot; it cannot open anything.</p>
+<p>There is no analytics SDK in the app, no crash-reporting service of ours, and no server of ours for anything to be sent to. The only libraries that talk to the network at all are Google's ads/consent SDK (free users only, after consent) and RevenueCat (purchases). <code>url_launcher</code> only hands a link to your browser or mail app when you tap one.</p>
+
+<h2 id="deletion">Keeping and deleting your data</h2>
+<p>Everything stays on your phone until you delete it or remove the app.</p>
+<h3>Settings &rarr; Reset all data</h3>
+<p>Asks for your PIN if you have one, then confirms, then permanently deletes:</p>
+<ul>
+  <li>every catch and Don't-Tap game with all of their tap logs, and the record of which catches you had opened;</li>
+  <li>the screenshot files only those catches used;</li>
+  <li>your fake-screen screenshot and your Caught-you image, as files and as settings;</li>
+  <li>your Caught-you message, look, tap count and vibration setting, with the Caught-you screen switched back off;</li>
+  <li>your TapTrap PIN, and the record that you practised the secret exit.</li>
+</ul>
+<p>It deliberately leaves alone: your trap credits, your TapTrap PRO purchase (which is held by Apple, Google and RevenueCat, not by the app), your language, vibration and theme settings, and your ad consent choice — that one lives in Google's consent SDK, and you change it under <em>Ad privacy choices</em> or in your device settings.</p>
+<h3>Other ways to delete</h3>
+<ul>
+  <li><strong>"Forgot PIN?"</strong> does the same reset and then returns you to the onboarding.</li>
+  <li><strong>Clear all catches</strong>, the sweep action in your catch history, deletes the catches, their tap logs, the unlock record and the screenshot files only they used. Your current fake screen is not touched — change or replace it on the trap setup screen.</li>
+  <li><strong>Uninstalling TapTrap</strong> removes everything it stored, including your credits and the consent choice on the device.</li>
+</ul>
+<h3>Backups</h3>
+<p>Because the app's data lives in its private storage, your phone's own backup may include it — iCloud backup on iPhone, Google account backup on Android — if you have that turned on. Those backups belong to your Apple or Google account; we have no access to them. You can exclude the app or turn backups off in your device settings.</p>
+<h3>Data held elsewhere</h3>
+<p>Ad data held by Google, and purchase records held by RevenueCat, Apple or Google, are kept under those companies' own policies; the links above explain how to reach them. Your purchase record is also what allows TapTrap PRO to be restored on a new phone.</p>
+
+<h2 id="rights">Your rights</h2>
+<p>Being precise here matters, because most of this policy describes data we do not have.</p>
+<p><strong>For everything the app stores:</strong> it is on your phone, under your control, and you can delete all of it at any time with the steps above. There is no request to send us, because there is nothing of yours on our side to look up.</p>
+<p><strong>For the data Google's ads SDK collects</strong> (free users, after consent): Google is the company that decides how that data is used, so access, correction, deletion and objection requests go to Google, through the links in the advertising section. In the EEA, the UK and Switzerland you may withdraw your consent at any time, as easily as you gave it, in <em>Ad privacy choices</em> or by going PRO; withdrawing does not affect what happened before. You may also complain to your local data protection authority.</p>
+<p><strong>For your purchase record:</strong> this is the one record connected to us, and it is tied to a random anonymous ID, not to you. Apple or Google holds the payment itself under your store account. Write to us and we will help you direct a request to the right company.</p>
+<p><strong>California (CCPA/CPRA) and similar laws:</strong> we do not sell or share your personal information, and we run no cross-context behavioural advertising of our own. If you want ad personalisation off, use <em>Ad privacy choices</em>, your device's ad settings, or TapTrap PRO.</p>
+
+<h2 id="third-party">Third-party services in the app</h2>
+<div class="table-scroll">
+<table>
+  <tr><th>Service</th><th>What it does here</th><th>When it runs</th></tr>
+  <tr><td>Google AdMob &amp; User Messaging Platform</td><td>Rewarded video ads and ad consent</td><td>Free users only, after consent</td></tr>
+  <tr><td>RevenueCat</td><td>Checks purchases, reports whether PRO is active</td><td>At launch, and when you buy or restore</td></tr>
+  <tr><td>Apple App Store / Google Play</td><td>Payment, subscriptions and refunds</td><td>Only when you buy or manage a plan</td></tr>
+</table>
+</div>
+<p>No other component in the app sends anything off your device.</p>
+
+<h2 id="changes">Changes to this policy</h2>
+<p>If the app changes in a way that affects this document, we update this page and change the date at the top. The link in <em>Settings &rarr; Privacy policy</em> always points here, so opening it from the app gives you the current version. Significant changes will also be mentioned in the release notes of the version that makes them.</p>
+
+<h2 id="contact">Contact</h2>
+<p>Questions about this policy, or about anything above: <a href="mailto:pekdemir.mn@gmail.com">pekdemir.mn@gmail.com</a>. You can also reach it from <em>Settings &rarr; Contact support</em> in the app.</p>
+
+<!-- ─────────────────────────────  TÜRKÇE  ───────────────────────────── -->
+<section class="lang-split" id="tr" lang="tr">
+  <h2>Türkçe</h2>
+  <p class="backlink"><a href="#short">&uarr; Back to English</a></p>
+
+  <p class="meta"><strong>Son güncelleme:</strong> 23 Eylül 2026 &middot; TapTrap 1.2.0 (iPhone ve Android) için geçerlidir.</p>
+  <p class="meta"><strong>Sorumlusu kim:</strong> TapTrap'i <strong>MNP</strong> yayınlıyor; uygulamanın neyi kaydettiğine karar veren ve işlediği az sayıda veri için veri sorumlusu olan taraf da o. İletişim: <a href="mailto:pekdemir.mn@gmail.com">pekdemir.mn@gmail.com</a>.</p>
+
+  <div class="lead">
+    <p class="title">TapTrap'i çoğu uygulamadan ayıran şey</p>
+    <p>Hesap yok, giriş yok. TapTrap sunucusu diye bir şey yok — böyle bir sunucu işletmiyoruz. Seçtiğin ekran görüntüsü, meraklının yaptığı her dokunuş, ısı haritaların, Yakalandın görselin ve PIN'in telefonuna yazılır ve orada kalır. Bunlar bize hiç ulaşmaz; uygulamada bunları bir yere yükleyen bir düğme yoktur.</p>
+  </div>
+
+  <h3>Kısaca</h3>
+  <ul>
+    <li>Bir tuzağın kaydettiği her şey — dokunuşlar, saatler, ısı haritaları, ekran görüntün — telefonunda kalır.</li>
+    <li>Uygulama fotoğraf galerini yalnızca sen bir görsel seçerken okur; kamerayı da yalnızca tek bir isteğe bağlı yerde kullanır.</li>
+    <li>Tek reklam türü ödüllü videodur ve her birini sen başlatırsın. Banner yok, geçiş reklamı yok, açılışta reklam yok.</li>
+    <li>İlk reklam isteğinden önce uygulama, gerekli olan bölgelerde Google'ın onay formunu gösterir; ardından iPhone'da izleme izni sorar.</li>
+    <li><strong>TapTrap PRO'da reklam da, onay formu da, izleme istemi de yoktur.</strong> PRO'da reklam SDK'sı hiç başlatılmaz.</li>
+    <li>Satın almalar Apple veya Google üzerinden yapılır. RevenueCat bunları rastgele, anonim bir kimlikle doğrular. Ödeme bilgilerini hiç görmeyiz.</li>
+    <li>Uygulamada analitik SDK'sı, bize ait çökme raporlama ve bize ait hiçbir ağ çağrısı yoktur.</li>
+  </ul>
+
+  <h3>Cihazında ne kalıyor, nerede duruyor</h3>
+  <p>TapTrap telefonuna iki tür şey yazar: sistemin uygulama tercihleri deposundaki küçük değerler ve uygulamanın kendi özel belgeler klasöründeki görsel ve seçilmiş video dosyaları. İkisi de uygulamaya özeldir; ikisini de okuyamayız.</p>
+  <p><strong>Uygulama tercihlerinde:</strong></p>
+  <ul>
+    <li><strong>Yakalamaların ve Dokunma oyunların</strong> (<code>tap_sessions</code>) — her biri için: tuzağın ne zaman kurulduğu ve bittiği, her dokunuşun x/y konumu ve saati, kurulduğu ekran boyutu, kullandığı ekran görüntüsünün dosya adı, Yakalandın ekranının görünüp görünmediği, ne zaman göründüğü ve o ekrana kaç kez dokunulduğu; ayrıca yakalamaya ait rastgele bir kimlik, tuzak mı oyun mu olduğu ve oyunun teması. Tuzağı bitirmek için yaptığın köşe dokunuşları, tuzaktan çıkarken kayıttan geri alınır; böylece hiçbir zaman başkasının dokunuşu gibi görünmezler. Başka bir şey kaydedilmez. TapTrap <em>kimin</em> dokunduğunu bilmez.</li>
+    <li><strong>Şu an çalışan tuzak</strong> (<code>active_session</code>) — sistem uygulamayı kapatırsa yakalama kaybolmasın diye saniyede en fazla bir kez yazılır; tuzak bitince silinir.</li>
+    <li><strong>TapTrap PIN'in</strong> (<code>pin_code</code>) — tek yönlü SHA-256 özeti olarak; rakamların hiç saklanmaz.</li>
+    <li><strong>Tuzak hakların</strong> (<code>trap_credits_v1</code>) — tek bir sayı.</li>
+    <li><strong>Açtığın yakalamalar</strong> (<code>unlocked_catches_v1</code>) — yakalama kimliklerinden oluşan bir liste.</li>
+    <li><strong>Yakalandın ekranı ayarların</strong> — açık/kapalı, kendi mesajın ya da seçtiğin hazır mesaj, görünümü, kaç dokunuş beklediği ve titreyip titremeyeceği.</li>
+    <li><strong>Tercihler</strong> — dil, oyun teması, titreşim, tanıtımı ve gizli çıkış provasını tamamlayıp tamamlamadığın, kaç yakalamayı görmüş olduğun.</li>
+    <li><strong>Birkaç iç bayrak ve dosya adı</strong> — aşağıdaki görsellerin ve isteğe bağlı videonun dosya adları, bir kerelik kilit açma taşımasının çalışıp çalışmadığı, PIN'inin bu sürümde doğrulanıp doğrulanmadığı ve sistemin yarıda kestiği bir görsel seçimini kurtarmaya yarayan bir işaret. Hiçbiri seni ya da yaptığın bir şeyi anlatmaz.</li>
+  </ul>
+  <p><strong>Uygulamanın belgeler klasöründe:</strong></p>
+  <ul>
+    <li><strong>Sahte ekran görüntün</strong> (<code>custom_bg_…</code>) — seçtiğin görselin en fazla 2200×4400 piksele küçültülmüş kopyası.</li>
+    <li><strong>Yakalandın görselin</strong> (<code>reveal_img_…</code>), ayarladıysan, aynı şekilde.</li>
+    <li><strong>Yakalandın videon</strong> (<code>reveal_video_…</code>), seçtiysen, galerindeki en fazla 2 dakika ve 100 MB boyutundaki videonun yerel kopyasıdır. Yakalandın ekranında tekrar oynar; ses isteğe bağlı ve varsayılan olarak kapalıdır. Uygulama video çekmez ve mikrofonu kullanmaz.</li>
+    <li>Eski sürümler her yakalama için ayrı bir ekran görüntüsü kopyası da tutuyordu (<code>session_bg_…</code>); bu kopyalar çalışmaya devam eder ve hiçbir yakalama onlara bağlı kalmayınca silinir.</li>
+  </ul>
+
+  <h3>Fotoğraflar ve kamera</h3>
+  <p><strong>Sahte ekran her zaman fotoğraf galerinden seçilir.</strong> Bunun için kamera hiç önerilmez — bir fotoğraf, ana ekranının ekran görüntüsü olamaz.</p>
+  <p><strong>İsteğe bağlı Yakalandın görseli</strong>, TapTrap'in kamerayı kullanabildiği tek yerdir. Bu görseli seçerken uygulama "Fotoğraf çek" mi "Galeriden seç" mi diye sorar; yalnızca ilki kamerayı açar. Uygulamanın tamamında kameranın kullanıldığı tek yer burasıdır.</p>
+  <p>Klasöre yalnızca seçtiğin ya da çektiğin tek görsel kopyalanır. TapTrap fotoğraf galerini gezmez, taramaz, dizinlemez, hiçbir yere yüklemez; mikrofonu hiç kullanmaz ve tuzak çalışırken kamerayı hiç açmaz.</p>
+  <p>Android'de uygulama ne kamera ne de galeri izni tanımlar: görsel seçimi sistemin kendi seçicisi ve kamera uygulaması üzerinden yapılır, onlar da geriye tek bir dosya verir.</p>
+
+  <h3>PIN'in ve PIN'i unutmak</h3>
+  <p>4 haneli TapTrap PIN'i çalışan tuzağı sonlandırır ve yakalamalarını korur. Saklanan şey PIN'in değil, PIN'in SHA-256 özetidir — yani saklanan değer okunup rakamlarına dönüştürülemez. 5 yanlış girişten sonra tuş takımı 30 saniye kilitlenir; yanlış giriş sayısı ve kilit bitiş zamanı yerel olarak saklanır; uygulamayı yeniden açmak kilidi kaldırmaz.</p>
+  <p><strong>Unutulan bir PIN'i ne biz ne de başka biri geri getirebilir.</strong> Bu yüzden "PIN'ini mi unuttun?" yapabileceği tek şeyi yapar: "Tüm verileri sıfırla"nın sildiği her şeyi siler (aşağıya bak) ve seni tanıtım ekranına döndürür.</p>
+
+  <h3>Tuzak hakları: nasıl kazanılır, neye harcanır</h3>
+  <ul>
+    <li><strong>Bir kereye mahsus 2 hak verilir</strong> — bu sürüm ilk çalıştığında, yeni kurulumda da güncellemede de herkese.</li>
+    <li><strong>Bir hak bir tuzak kurar.</strong> Tuzak başladığı anda harcanır ve iadesi yoktur: dokunulmamış bir tuzak da bir sonuçtur. Dokunma oyunları ve gizli çıkış provası hiçbir şeye mal olmaz.</li>
+    <li><strong>Bir hak, kilitli bir yakalamayı açar</strong> (aşağıya bak).</li>
+    <li><strong>Ödüllü videoyu sonuna kadar izleyince bir hak kazanırsın.</strong> Elinde 3 hak varken teklif gizlenir; ama hak ettiğin ödül her zaman verildiği için bakiye 3'ün üstüne çıkabilir.</li>
+    <li><strong>Haklar parayla satın alınamaz</strong> — hiçbir satın alma hak eklemez. Süreleri dolmaz, üzerlerinde bir sayaç yoktur.</li>
+    <li>Bakiye telefonundaki tek bir sayıdır. Bununla ilgili hiçbir şey cihazdan çıkmaz. Hoş geldin hakkı her kurulumda bir kez yazılır — PRO olsun olmasın — ama PRO hiçbir zaman hak harcamaz ya da kazanmaz.</li>
+  </ul>
+
+  <h3>Bir yakalamayı açmak</h3>
+  <p>Bir yakalamanın <strong>kanıtı her zaman ücretsizdir</strong>: başlığı, tuzağın ne zaman ve ne kadar çalıştığı, ilk ve son dokunuş, zaman çizelgesi ve dokunuş · bölge özeti. Bunların hepsini hiçbir şey ödemeden, hiçbir şey izlemeden görürsün.</p>
+  <p>Yeni bir yakalamada kilitli olan kısım <strong>ısı haritasıdır</strong> — parmakların ekran görüntünün tam olarak neresine indiği. Üç yoldan biriyle açabilirsin:</p>
+  <ul>
+    <li><strong>1 tuzak hakkı</strong> harca; ya da</li>
+    <li><strong>bir ödüllü video</strong> izle — bu video o yakalamayı açar, hak eklemez ve hak harcamaz; ya da</li>
+    <li><strong>TapTrap PRO</strong> al; PRO her yakalamayı hiçbir şey harcamadan açar.</li>
+  </ul>
+  <p>Açma işlemi kalıcıdır ve yakalamaya özeldir: bir kez açılan ısı haritası sonraki her ziyarette açık kalır.</p>
+  <div class="callout blue">
+    <p><strong>Açma işlemi başarısız olursa senden bir şey alınmaz.</strong> Videoyu erken kapatırsan yakalama kilitli kalır — ne hak eklenir ne de alınır. Hakkın harcandığı ama açmanın kaydedilemediği ender durumda hak anında geri verilir ve uygulama bunu sana söyler.</p>
+  </div>
+  <p><strong>Eski sürümden kalan yakalamaların varsa</strong> bunlar asla kilitlenmez. 1.2.0 ilk çalıştığında o anda var olan her yakalama kalıcı olarak açık işaretlenir. Bir Dokunma oyunu sonucu yakalama sayılmaz ve hiç kilitlenmez.</p>
+  <p>Kilitli bir yakalama, ekran görüntünü bulanık gösterir ve üzerine <em>hiç</em> ısı çizilmez — soluk bir şekil bile. Sen açmadan önce dokunuşlarla ilgili hiçbir şey sızmaz.</p>
+
+  <h3>Reklamlar</h3>
+  <p>TapTrap'teki tek reklam türü <strong>Google AdMob'un ödüllü videolarıdır</strong> (Google Mobile Ads SDK). Uygulamanın hiçbir yerinde banner, geçiş reklamı, açılış reklamı ya da yerel (native) reklam yoktur.</p>
+  <p><strong>Her reklamı sen başlatırsın</strong>, şu üç yerden biriyle:</p>
+  <ul>
+    <li>hakkın kalmadan Başlat'a bastığında açılan "Tuzak hakkın bitti" paneli;</li>
+    <li>Ayarlar &rarr; Tuzak hakları &rarr; "Ücretsiz tuzak kazan";</li>
+    <li>kilitli bir yakalamadaki "Yakalamayı aç" paneli.</li>
+  </ul>
+  <p><strong>Reklam asla şuralarda çıkamaz:</strong> açılışta ya da açılış ekranında, tanıtım sırasında, bir tuzak ya da prova ekrandayken, gizli çıkış veya PIN ekranında, ya da bir sonuç ekranında kendiliğinden. TapTrap senin istemediğin bir reklamı oynatmaz.</p>
+  <p>Reklam içeriği <strong>"G" (genel izleyici)</strong> derecesiyle sınırlanmıştır; uygulama bu sınırı reklam SDK'sı başlar başlamaz uygular.</p>
+  <p><strong>Videoyu erken kapatırsan hiçbir şey alamazsın</strong> — hak eklenmez, yakalama kilitli kalır. Ödül, Google onu bildirdiği anda kaydedilir; böylece reklamın bitiş kartındayken uygulama kapansa bile kaybolmaz.</p>
+  <p>Önceki sürümler farklı çalışıyordu: 1.1.x'e kadar ücretsiz kullanıcılar Dokunma oyunundan sonra tam ekran bir reklam da görüyordu ve onay formu yoktu. Burada anlatılan davranış için 1.2.0'a güncelle. Hâlâ 1.1.1'deysen <em>o</em> sürümü anlatan politika <a href="https://mnpekdemir.github.io/taptrap-pages/1.1.1/privacy-policy.html#tr">https://mnpekdemir.github.io/taptrap-pages/1.1.1/privacy-policy.html</a> adresinde duruyor (şartları da onun yanında).</p>
+
+  <h3>Onay ve izleme izni</h3>
+  <p>Ücretsiz kullanıcılarda reklam SDK'sı ancak aşağıdaki adımlardan sonra ve ancak bu adımlar izin verirse başlatılır. Adımlar Ana ekrandan çalışır — ilk karesinde ve Ana ekran yeniden öne geldiğinde — açılış ekranında asla, tanıtım sırasında asla ve çalışan bir tuzağın üzerinde asla. Adımların çalışacağı sırada bir tuzaktaysan, Ana ekran yeniden üste gelene kadar beklerler.</p>
+  <ol class="steps">
+    <li><strong>Google, onay SDK'sına senin için neyin geçerli olduğunu sorar</strong> (User Messaging Platform, UMP). Bu adım başarısız olursa — örneğin çevrimdışıysan — sonraki iki adım o seferlik atlanır ve uygulama önceki bir oturumda verdiğin karara döner.</li>
+    <li><strong>Gerekli olduğu yerde onay formu.</strong> Avrupa Ekonomik Alanı, Birleşik Krallık, İsviçre ve Google'ın gerekli gördüğü diğer bölgelerde; kabul edebilir, reddedebilir ya da IAB Şeffaflık ve Onay Çerçevesi kapsamında amaçları ve reklam ortaklarını tek tek seçebilirsin. Kararın cihazında Google'ın onay SDK'sı tarafından saklanır ve reklam istekleriyle birlikte gönderilir.</li>
+    <li><strong>Yalnızca iPhone'da App Tracking Transparency.</strong> Daha önce hiç yanıtlamadıysan iOS, TapTrap'in seni izleyip izleyemeyeceğini sorar. Sistem isteminden hemen önce Google'ın kendi açıklama ekranı çıkabilir.</li>
+    <li><strong>Ancak bundan sonra</strong>, Google'ın SDK'sı reklam isteğine izin veriyorsa, uygulama Mobile Ads SDK'sını başlatır, G içerik sınırını uygular ve bir ödüllü reklam yükler. <code>MobileAds.initialize</code> bu noktadan önce hiç çağrılmaz.</li>
+  </ol>
+  <div class="callout">
+    <p><strong>TapTrap PRO bunların hepsini atlar.</strong> PRO etkinse dört adımın hiçbiri çalışmaz: onay formu yok, izleme istemi yok ve Google Mobile Ads SDK'sı hiç başlatılmaz. (Abonelik biterse adımlar, Ana ekrana bir sonraki gelişinde çalışır.)</p>
+  </div>
+  <p><strong>Fikrini değiştirmek:</strong> Google'ın kalıcı bir giriş noktası istediği yerlerde <em>Ayarlar &rarr; Tuzak hakları &rarr; Reklam gizlilik seçenekleri</em> onay formunu istediğin an yeniden açar. iPhone'da izlemeyi <em>Ayarlar &rarr; Gizlilik ve Güvenlik &rarr; İzleme</em> altından açıp kapatabilirsin. Android'de reklam kimliğini <em>Ayarlar &rarr; Google &rarr; Reklamlar</em> altından sıfırlayabilir veya silebilir, kişiselleştirmeyi kapatabilirsin. TapTrap her iki durumda da aynı şekilde çalışır.</p>
+  <p><em>Ayarlar &rarr; Tuzak hakları &rarr; Bir reklamı bildir</em> bize bir e-posta açar. Yalnızca senin yazmayı seçtiğin şeyi alırız.</p>
+
+  <h3>Reklam kimlikleri ve Google'ın aldığı veriler</h3>
+  <p>Reklamlar senin için etkinse — ve yalnızca o zaman — Google'ın SDK'sı cihaza özel bir reklam kimliğiyle çalışır:</p>
+  <ul>
+    <li><strong>iPhone:</strong> Reklamcılar için Tanımlayıcı (IDFA); yalnızca izlemeye izin verdiysen kullanılır. Uygulama ayrıca Apple'ın SKAdNetwork kimliklerini listeler; bunlar Apple'ın reklam kampanyalarını seni tanımlamadan ölçmesini sağlar.</li>
+    <li><strong>Android:</strong> Google Reklam Kimliği. Google Mobile Ads kütüphanesi uygulamaya <code>com.google.android.gms.permission.AD_ID</code> iznini, ayrıca Android Privacy Sandbox izinleri <code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code> ve <code>ACCESS_ADSERVICES_TOPICS</code>'i ekler. Cihazının kendi reklam ayarları yine geçerlidir.</li>
+  </ul>
+  <p>Google'ın Mobile Ads SDK'sı için yayımladığı gizlilik bildirimi şunları topladığını beyan eder: cihaz tanımlayıcısı, reklam verileri, ürün etkileşimi, ağdan türetilen yaklaşık konum ve çökme/performans gibi tanılama verileri. Pratikte buna IP adresin, cihaz modelin, işletim sistemi sürümün, dilin, ekran boyutun ve uygulamanın adı ile sürümü de dâhildir.</p>
+  <p>Bu verileri <strong>biz değil, Google</strong> toplar. Bize hiç ulaşmaz; kimin reklam izlediğini göremeyiz. Google bunları reklam sunmak ve ölçmek, sahteciliği önlemek ve izin verdiğin durumda reklamları kişiselleştirmek için kullanır. Ayrıntılar: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik Politikası</a>, <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google'ın hizmetlerini kullanan site ve uygulamalardan gelen bilgileri nasıl kullandığı</a> ve <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google reklam teknolojileri</a>.</p>
+
+  <h3>Satın almalar</h3>
+  <p>TapTrap PRO; aylık veya yıllık otomatik yenilenen abonelik olarak ya da tek seferlik Ömür Boyu satın alma olarak sunulur. <strong>Ödemeyi tamamen Apple App Store veya Google Play yürütür</strong>; kendi Apple ya da Google hesabın ve onların koşulları altında. Kartını, fatura adresini veya mağaza hesabını hiç görmeyiz.</p>
+  <p>TapTrap, bir satın almayı doğrulamak ve bu cihazda PRO'nun etkin olup olmadığını bilmek için <strong>RevenueCat</strong> kullanır. RevenueCat kurulumuna <strong>rastgele, anonim bir Uygulama Kullanıcı Kimliği</strong> verir — uygulama hiçbir zaman kendi kimlik atamaz, e-posta adresini vermez ve satın almayı bir isme ya da hesaba bağlamaz. RevenueCat'e mağaza makbuzu veya satın alma belirteci, TapTrap satın alma ve abonelik geçmişin, ayrıca cihaz modeli, işletim sistemi sürümü, uygulama sürümü ve IP adresi gibi temel teknik veriler ulaşır. Ayrıntılar: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Gizlilik Politikası</a>.</p>
+  <p>Kendi panelimizde görebildiğimiz şey, anonim bir kimliğe bağlı bir satın almadır: hangi plan, etkin mi, iade edilmiş mi. Seni tanımlayan hiçbir şey ve tuzaklarınla ilgili hiçbir şey yok.</p>
+  <p>Ayarlar'daki "Satın alımları geri yükle" ve "Aboneliği yönet", mağazaya ve RevenueCat'e aynı anonim kaydı sorar.</p>
+
+  <h3>Uygulamanın istediği izinler</h3>
+  <p><strong>iPhone.</strong> TapTrap tam olarak üç izin istemi tanımlar, başka hiçbiri yok — mikrofon yok, konum yok, rehber yok, sağlık yok, takvim yok:</p>
+  <div class="table-scroll">
+  <table>
+    <tr><th>İstem</th><th>Neden</th></tr>
+    <tr><td>Fotoğraf galerisi</td><td>Sahte ekran için ekran görüntüsünü ya da isteğe bağlı Yakalandın ekranı için bir görseli seçebilmen için.</td></tr>
+    <tr><td>Kamera</td><td>Yalnızca Yakalandın görseli için "Fotoğraf çek"i seçersen.</td></tr>
+    <tr><td>İzleme (ATT)</td><td>Yalnızca ücretsiz kullanıcılarda, yalnızca yukarıdaki onay akışında ve yalnızca daha alakalı reklam göstermek için.</td></tr>
+  </table>
+  </div>
+  <p><strong>Android.</strong> Uygulamanın kendisi yalnızca Google Play faturalandırma iznini tanımlar. Yayımlanan 1.2.0 paketinin nihai manifestinde, kullandığı kütüphanelerin eklediği izinler de bulunur: <code>INTERNET</code> ve <code>ACCESS_NETWORK_STATE</code>, yukarıda sayılan reklam kimliği ve Privacy Sandbox izinleri, Google Play hizmetlerinden gelen <code>WAKE_LOCK</code> ve <code>FOREGROUND_SERVICE</code>, ayrıca uygulamanın yalnızca kendi bileşenleri birbiriyle konuşabilsin diye kendisi için tanımlayıp kendisine verdiği imza düzeyinde bir izin. Bunların hiçbiri çalışma zamanı izni değildir ve hiçbiri TapTrap'e fotoğraflarına, kamerana, mikrofonuna, konumuna ya da rehberine erişim vermez.</p>
+
+  <h3>Çocuklar</h3>
+  <p>TapTrap çocuklar için tasarlanmamıştır ve çocuklara yönelik değildir; çocuklardan bilerek kişisel bilgi toplamayız. Reklam içeriği "G" derecesiyle sınırlıdır, yani gösterilebilecek reklamlar genel izleyiciye uygundur. Cihazında bir çocuğun uygulamayı kullandığını düşünüyorsan, aşağıdaki "tüm verileri sıfırla" işlemi uygulamanın sakladığı her şeyi kaldırır.</p>
+
+  <h3>Bizim asla göremeyeceklerimiz</h3>
+  <p>Hiçbir şey yüklenmediği için şunlar zaten elimizde olmayan şeylerdir:</p>
+  <ul>
+    <li>ekran görüntün, Yakalandın görselin ve Yakalandın mesajın;</li>
+    <li>birinin nereye, ne zaman, kaç kez dokunduğu — hiçbir dokunuş, hiçbir yakalama, hiçbir ısı haritası;</li>
+    <li>PIN'in, hiçbir biçimde;</li>
+    <li>hak bakiyen, hangi yakalamaları açtığın, dilin ve ayarların;</li>
+    <li>telefonunu kimin kullandığı ya da ne aradığı.</li>
+  </ul>
+  <p>TapTrap ayrıca mesajlarını, tuş vuruşlarını, bildirimlerini, rehberini, konumunu ya da diğer uygulamalarını hiç okumaz. Tuzak, kendi ekran görüntünün tek bir durağan görselidir; hiçbir şeyi açamaz.</p>
+  <p>Uygulamada analitik SDK'sı yok, bize ait çökme raporlama hizmeti yok ve bir şeyin gönderilebileceği bir sunucumuz yok. Ağla konuşan tek bileşenler Google'ın reklam/onay SDK'sı (yalnızca ücretsiz kullanıcılar, onaydan sonra) ve RevenueCat'tir (satın almalar). <code>url_launcher</code> ise yalnızca bir bağlantıya dokunduğunda o bağlantıyı tarayıcına veya e-posta uygulamana devreder.</p>
+
+  <h3>Verilerin saklanması ve silinmesi</h3>
+  <p>Her şey, sen silene ya da uygulamayı kaldırana kadar telefonunda kalır.</p>
+  <p><strong>Ayarlar &rarr; Tüm verileri sıfırla.</strong> Varsa PIN'ini sorar, sonra onay ister, sonra şunları kalıcı olarak siler:</p>
+  <ul>
+    <li>bütün dokunuş kayıtlarıyla birlikte her yakalama ve Dokunma oyunu, ayrıca hangi yakalamaları açtığın bilgisi;</li>
+    <li>yalnızca o yakalamaların kullandığı ekran görüntüsü dosyaları;</li>
+    <li>sahte ekran görüntün ve Yakalandın görselin — hem dosya hem ayar olarak;</li>
+    <li>Yakalandın mesajın, görünümü, dokunuş sayısı ve titreşim ayarı; Yakalandın ekranı kapalı konuma döner;</li>
+    <li>TapTrap PIN'in ve gizli çıkış provasını yaptığın kaydı.</li>
+  </ul>
+  <p>Bilerek dokunmadıkları: tuzak hakların, TapTrap PRO satın alman (bu uygulamada değil, Apple, Google ve RevenueCat tarafında durur), dil, titreşim ve tema ayarların ve reklam onay kararın — sonuncusu Google'ın onay SDK'sında yaşar; onu <em>Reklam gizlilik seçenekleri</em>nden veya cihaz ayarlarından değiştirirsin.</p>
+  <p><strong>Diğer silme yolları:</strong></p>
+  <ul>
+    <li><strong>"PIN'ini mi unuttun?"</strong> aynı sıfırlamayı yapar ve seni tanıtım ekranına döndürür.</li>
+    <li><strong>Yakalama geçmişindeki temizleme işlemi</strong> yakalamaları, dokunuş kayıtlarını, açma kaydını ve yalnızca onların kullandığı ekran görüntüsü dosyalarını siler. Şu anki sahte ekranına dokunmaz — onu tuzak kurulum ekranından değiştirebilir ya da kaldırabilirsin.</li>
+    <li><strong>TapTrap'i kaldırmak</strong>, hakların ve cihazdaki onay kaydın dâhil sakladığı her şeyi siler.</li>
+  </ul>
+  <p><strong>Yedekler.</strong> Uygulamanın verileri kendi özel alanında durduğu için, açıksa telefonunun kendi yedeğine dâhil olabilir — iPhone'da iCloud yedeği, Android'de Google hesabı yedeği. Bu yedekler senin Apple ya da Google hesabına aittir; bizim erişimimiz yoktur. Cihaz ayarlarından uygulamayı yedek dışında tutabilir ya da yedeklemeyi kapatabilirsin.</p>
+  <p><strong>Başka yerlerde tutulan veriler.</strong> Google'daki reklam verileri ve RevenueCat, Apple ya da Google'daki satın alma kayıtları, o şirketlerin kendi politikalarına göre saklanır; yukarıdaki bağlantılar onlara nasıl ulaşacağını anlatır. Satın alma kaydın aynı zamanda TapTrap PRO'yu yeni bir telefonda geri yüklemeni sağlayan şeydir.</p>
+
+  <h3>Hakların</h3>
+  <p>Burada kesin konuşmak önemli, çünkü bu politikanın büyük kısmı elimizde <em>olmayan</em> verileri anlatıyor.</p>
+  <p><strong>Uygulamanın sakladığı her şey için:</strong> veri telefonunda, senin kontrolünde; yukarıdaki adımlarla istediğin an tamamını silebilirsin. Bize göndereceğin bir talep yok, çünkü bizim tarafımızda bakılacak bir kaydın yok.</p>
+  <p><strong>Google'ın reklam SDK'sının topladığı veriler için</strong> (ücretsiz kullanıcılar, onaydan sonra): bu verinin nasıl kullanılacağına Google karar verir; dolayısıyla erişim, düzeltme, silme ve itiraz talepleri reklam bölümündeki bağlantılar üzerinden Google'a gider. AEA, Birleşik Krallık ve İsviçre'de onayını istediğin an, verdiğin kadar kolay biçimde geri çekebilirsin: <em>Reklam gizlilik seçenekleri</em>nden ya da PRO'ya geçerek. Geri çekmek, o âna kadar olanları etkilemez. Ayrıca yerel veri koruma otoritene şikâyette bulunabilirsin.</p>
+  <p><strong>Satın alma kaydın için:</strong> bizimle bağlantılı tek kayıt budur ve sana değil, rastgele bir anonim kimliğe bağlıdır. Ödemenin kendisini, senin mağaza hesabın altında Apple ya da Google tutar. Bize yaz, talebini doğru şirkete yönlendirmene yardımcı olalım.</p>
+  <p><strong>Kaliforniya (CCPA/CPRA) ve benzeri yasalar:</strong> kişisel bilgilerini satmayız ve paylaşmayız; kendi adımıza bağlamlar arası davranışsal reklamcılık yapmayız. Reklam kişiselleştirmesini kapatmak istersen <em>Reklam gizlilik seçenekleri</em>ni, cihazının reklam ayarlarını ya da TapTrap PRO'yu kullan.</p>
+
+  <h3>Uygulamadaki üçüncü taraf hizmetler</h3>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Hizmet</th><th>Burada ne yapıyor</th><th>Ne zaman çalışıyor</th></tr>
+    <tr><td>Google AdMob ve User Messaging Platform</td><td>Ödüllü video reklamlar ve reklam onayı</td><td>Yalnızca ücretsiz kullanıcılarda, onaydan sonra</td></tr>
+    <tr><td>RevenueCat</td><td>Satın almaları doğrular, PRO etkin mi bildirir</td><td>Açılışta, satın alma ve geri yüklemede</td></tr>
+    <tr><td>Apple App Store / Google Play</td><td>Ödeme, abonelikler ve iadeler</td><td>Yalnızca satın alırken veya plan yönetirken</td></tr>
+  </table>
+  </div>
+  <p>Uygulamadaki başka hiçbir bileşen cihazından dışarı bir şey göndermez.</p>
+
+  <h3>Bu politikadaki değişiklikler</h3>
+  <p>Uygulama, bu belgeyi etkileyecek şekilde değişirse bu sayfayı güncelleriz ve en üstteki tarihi değiştiririz. <em>Ayarlar &rarr; Gizlilik politikası</em> bağlantısı her zaman buraya gider; yani uygulamadan açtığında güncel sürümü görürsün. Önemli değişiklikler, o değişikliği getiren sürümün notlarında da belirtilir.</p>
+
+  <h3>İletişim</h3>
+  <p>Bu politikayla ya da yukarıdaki herhangi bir konuyla ilgili sorular için: <a href="mailto:pekdemir.mn@gmail.com">pekdemir.mn@gmail.com</a>. Uygulamadaki <em>Ayarlar &rarr; Destekle iletişim</em> satırından da ulaşabilirsin.</p>
+</section>
+
+<footer>
+  <p>TapTrap 1.2.0 &middot; Privacy Policy / Gizlilik Politikası &middot; 23 September 2026 &middot; 2026 MNP</p>
+</footer>
+
+</div>
+</body>
+</html>

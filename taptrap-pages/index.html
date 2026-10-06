@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#07080A">
+<title>TapTrap — Who touched my phone?</title>
+<meta name="description" content="TapTrap turns a screenshot of your own home screen into a trap. Whoever picks up your phone taps a fake screen; you come back and see a heatmap of exactly where they tapped. Works even if they know your passcode. Your taps and screenshots stay on your device.">
+<meta property="og:title" content="TapTrap — Who touched my phone?">
+<meta property="og:description" content="See exactly where they tapped. Works even if they know your passcode. Your taps and screenshots stay on your device.">
+<meta property="og:type" content="website">
+<!-- This page is the Marketing / Developer-website URL, and it lives on the
+     host that serves /app-ads.txt (mnpekdemirapps.github.io). The legal pages
+     live on the other host, mnpekdemir.github.io, which is what every shipped
+     build opens (lib/core/app_links.dart) - so all links to them are absolute. -->
+<meta property="og:url" content="https://mnpekdemirapps.github.io/taptrap-pages/">
+<link rel="canonical" href="https://mnpekdemirapps.github.io/taptrap-pages/">
+<style>
+  :root{
+    --canvas:#07080A; --s1:#111317; --s2:#181B20; --s3:#22262C; --line:#2C3138;
+    --t1:#F4F5F7; --t2:#A3A9B2; --t3:#8A919B;
+    --red:#FF453A; --redText:#FF6259; --btnTop:#E0302A; --btnBottom:#C8261F;
+    --blue:#4A8DFF; --indigo:#7B83F7; --orchid:#C77DD0; --amber:#FFA24A;
+    --radius:16px; --maxw:1040px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--canvas); color:var(--t2);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    padding-inline:20px;
+    padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  a{color:var(--redText);text-decoration:none}
+  a:hover{text-decoration:underline}
+  strong{color:var(--t1);font-weight:600}
+
+  /* ── header ── */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:18px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:20px;
+    letter-spacing:-.02em;color:var(--t1)}
+  .brand:hover{text-decoration:none}
+  .lens{width:22px;height:22px;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 38% 34%,#FFA24A 0%,#FF453A 28%,#C77DD0 56%,#7B83F7 78%,#4A8DFF 100%);
+    box-shadow:0 0 0 2px #2C3138,0 0 14px rgba(255,69,58,.35)}
+  .top nav{display:flex;gap:6px;flex-wrap:wrap;font-size:14px}
+  .top nav a{color:var(--t2);padding:6px 12px;border-radius:999px;border:1px solid transparent}
+  .top nav a:hover{text-decoration:none;background:var(--s2);border-color:var(--line);color:var(--t1)}
+  .top nav a.on{color:var(--t1);border-color:rgba(255,69,58,.5)}
+
+  /* ── hero ── */
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;padding:60px 0 44px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--t3);font-size:13px;
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--red)}
+  h1{color:var(--t1);font-size:clamp(31px,5vw,52px);line-height:1.1;letter-spacing:-.03em;font-weight:800}
+  h1 em{font-style:normal;color:var(--redText)}
+  .lead{color:var(--t2);font-size:18px;margin:18px 0 26px;max-width:54ch}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;flex-direction:column;justify-content:center;gap:1px;
+    padding:11px 20px;border-radius:13px;font-weight:600;font-size:16px;
+    border:1px solid var(--line);background:var(--s2);color:var(--t1);line-height:1.25}
+  .btn:hover{text-decoration:none;border-color:#3a4049;background:var(--s3)}
+  .btn small{font-weight:400;opacity:.75;font-size:11.5px;letter-spacing:.02em}
+  .btn.primary{background:linear-gradient(180deg,var(--btnTop),var(--btnBottom));
+    border-color:transparent;color:#fff}
+  .btn.primary:hover{filter:brightness(1.07)}
+  .fine{color:var(--t3);font-size:13.5px;margin-top:16px}
+
+  /* ── phone mockup, pure CSS ── */
+  .stage{position:relative}
+  .stage::before{content:"";position:absolute;inset:-10% -6% 6%;z-index:0;
+    background:radial-gradient(ellipse at 50% 40%,rgba(74,141,255,.13),transparent 62%)}
+  .phone{position:relative;z-index:1;width:250px;max-width:100%;aspect-ratio:9/19;margin:0 auto;
+    border-radius:38px;background:#0b0b0d;border:6px solid #2a2e35;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.65),inset 0 0 0 1px #000}
+  .phone .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);
+    width:34%;height:18px;border-radius:12px;background:#000;z-index:3}
+  .phone .icons{position:absolute;inset:46px 16px 84px;display:grid;
+    grid-template-columns:repeat(4,1fr);grid-auto-rows:min-content;gap:16px 10px;align-content:start}
+  .phone .icons i{display:block;width:100%;aspect-ratio:1;border-radius:24%;
+    background:var(--c,#3b3b44);opacity:.55}
+  .phone .dock{position:absolute;left:12px;right:12px;bottom:14px;height:54px;border-radius:18px;
+    background:rgba(255,255,255,.07);display:flex;justify-content:space-around;align-items:center;padding:0 8px}
+  .phone .dock i{width:36px;height:36px;border-radius:24%;background:var(--c,#3b3b44);display:block;opacity:.62}
+  .heat{position:absolute;border-radius:50%;pointer-events:none;z-index:2}
+  .heat.l4{width:84px;height:84px;left:22%;top:17%;background:radial-gradient(circle,
+    rgba(255,69,58,.95) 0%,rgba(255,110,60,.90) 18%,rgba(255,162,74,.78) 34%,
+    rgba(199,125,208,.50) 58%,rgba(123,131,247,.24) 78%,rgba(74,141,255,0) 100%)}
+  .heat.l3{width:72px;height:72px;left:47%;top:35%;background:radial-gradient(circle,
+    rgba(255,162,74,.95) 0%,rgba(255,150,80,.80) 22%,rgba(199,125,208,.55) 52%,
+    rgba(123,131,247,.24) 78%,rgba(74,141,255,0) 100%)}
+  .heat.l2{width:64px;height:64px;left:6%;top:50%;background:radial-gradient(circle,
+    rgba(199,125,208,.92) 0%,rgba(170,128,230,.66) 36%,rgba(123,131,247,.30) 70%,rgba(74,141,255,0) 100%)}
+  .heat.l1{width:58px;height:58px;left:50%;top:78%;background:radial-gradient(circle,
+    rgba(123,131,247,.88) 0%,rgba(90,138,255,.55) 42%,rgba(74,141,255,0) 100%)}
+  .tap{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;z-index:3;
+    box-shadow:0 0 0 1.5px rgba(0,0,0,.45)}
+  .pill{position:absolute;left:50%;transform:translateX(-50%);bottom:98px;z-index:4;
+    background:rgba(7,8,10,.82);border:1px solid var(--line);color:var(--t1);font-size:12px;
+    padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .legend{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:16px;
+    color:var(--t3);font-size:12px}
+  .legend .bar{width:104px;height:6px;border-radius:3px;
+    background:linear-gradient(90deg,var(--blue),var(--indigo) 30%,var(--orchid) 55%,var(--amber) 80%,var(--red))}
+  .caption{text-align:center;color:var(--t3);font-size:13px;margin-top:10px}
+
+  /* ── sections ── */
+  section{padding:40px 0;border-top:1px solid var(--line)}
+  h2{color:var(--t1);font-size:clamp(23px,3vw,30px);line-height:1.18;letter-spacing:-.02em;margin-bottom:10px;font-weight:700}
+  .sub{color:var(--t2);max-width:62ch;margin-bottom:24px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--s1);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .card .n{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--s3);
+    color:var(--t1);font-weight:700;font-size:15px;align-items:center;justify-content:center;margin-bottom:14px}
+  .card h3{color:var(--t1);font-size:17px;margin-bottom:6px;font-weight:600}
+  .card p{color:var(--t2);font-size:15px}
+  .callout{display:grid;grid-template-columns:1fr 1fr;gap:26px;
+    background:linear-gradient(180deg,#14171B,#0E1013);border:1px solid var(--line);
+    border-radius:var(--radius);padding:28px;position:relative;overflow:hidden}
+  .callout::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
+    background:linear-gradient(90deg,var(--blue),var(--indigo) 30%,var(--orchid) 55%,var(--amber) 80%,var(--red))}
+  .callout h2{font-size:21px;margin-bottom:8px}
+  .callout p{color:var(--t2)}
+  ul.check{list-style:none;display:grid;gap:12px}
+  ul.check li{padding-left:28px;position:relative;color:var(--t2)}
+  ul.check li::before{content:"";position:absolute;left:0;top:7px;width:15px;height:15px;
+    border-radius:50%;background:rgba(255,69,58,.14);box-shadow:inset 0 0 0 2px var(--red)}
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+  .plan{background:var(--s1);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .plan.pro{border-color:transparent;background:
+    linear-gradient(var(--s1),var(--s1)) padding-box,
+    linear-gradient(90deg,var(--blue),var(--indigo) 30%,var(--orchid) 55%,var(--amber) 80%,var(--red)) border-box;
+    border:1px solid transparent}
+  .plan h3{color:var(--t1);font-size:18px;margin-bottom:12px;font-weight:700}
+  .plan ul{list-style:none;display:grid;gap:9px;font-size:15px}
+  .plan li{padding-left:18px;position:relative}
+  .plan li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;
+    border-radius:50%;background:var(--orchid)}
+  .plan.pro li::before{background:var(--amber)}
+  .faq details{border:1px solid var(--line);border-radius:12px;padding:15px 18px;
+    background:var(--s1);margin-bottom:10px}
+  .faq summary{cursor:pointer;font-weight:600;color:var(--t1);list-style:none;
+    position:relative;padding-right:26px;line-height:1.4}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:0;top:0;color:var(--t3);font-weight:400;font-size:18px}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{color:var(--t2);margin-top:9px}
+  .support{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .support .mail{font-size:18px;font-weight:600}
+  footer{border-top:1px solid var(--line);padding:26px 0 44px;color:var(--t3);font-size:14px;
+    display:flex;gap:12px 24px;flex-wrap:wrap;justify-content:space-between}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap}
+  footer a{color:var(--t3)}
+  footer a:hover{color:var(--t2)}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;gap:34px;padding:38px 0 30px}
+    .grid,.callout,.plans{grid-template-columns:1fr}
+    .phone{width:222px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .heat.l4{animation:pulse 3.4s ease-in-out infinite}
+    .heat.l3{animation:pulse 3.4s ease-in-out 1.5s infinite}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:.95}50%{transform:scale(1.07);opacity:1}}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="brand" href="#en"><span class="lens" aria-hidden="true"></span>TapTrap</a>
+  <nav aria-label="Language and legal">
+    <a class="on" href="#en">English</a>
+    <a href="#tr">Türkçe</a>
+    <a href="https://mnpekdemir.github.io/taptrap-pages/privacy-policy.html">Privacy</a>
+    <a href="https://mnpekdemir.github.io/taptrap-pages/terms-of-use.html">Terms</a>
+  </nav>
+</header>
+
+<!-- ============================== ENGLISH ============================== -->
+<main id="en" lang="en">
+
+<section class="hero" style="border-top:0">
+  <div>
+    <p class="eyebrow"><span class="dot"></span>iPhone &amp; Android</p>
+    <h1>Who touched your phone?<br><em>See exactly where they tapped.</em></h1>
+    <p class="lead">TapTrap turns a screenshot of <strong>your own home screen</strong> into a trap. Whoever picks up your phone lands on a fake screen, and every tap is silently recorded. You come back, do the secret corner gesture, and see a heatmap of what they tried to open — <strong>even if they know your passcode</strong>.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://apps.apple.com/app/id6762041580" rel="noopener"><small>Download on the</small>App Store</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.donttap.dont_tap" rel="noopener"><small>Get it on</small>Google Play</a>
+    </div>
+    <p class="fine">Free to try · No account · 12 languages · Nothing leaves your phone</p>
+  </div>
+  <div class="stage">
+    <div class="phone" aria-hidden="true">
+      <div class="notch"></div>
+      <div class="icons">
+        <i style="--c:#4f7cff"></i><i style="--c:#34c759"></i><i style="--c:#ff9f0a"></i><i style="--c:#5e5ce6"></i>
+        <i style="--c:#ff375f"></i><i style="--c:#64d2ff"></i><i style="--c:#8e8e93"></i><i style="--c:#ffd60a"></i>
+        <i style="--c:#30d158"></i><i style="--c:#bf5af2"></i><i style="--c:#ff453a"></i><i style="--c:#0a84ff"></i>
+        <i style="--c:#48484a"></i><i style="--c:#ac8e68"></i><i style="--c:#66d4cf"></i><i style="--c:#636366"></i>
+        <i style="--c:#5856d6"></i><i style="--c:#ff6482"></i><i style="--c:#32ade6"></i><i style="--c:#a2845e"></i>
+        <i style="--c:#8e8e93"></i><i style="--c:#30b0c7"></i><i style="--c:#ffcc00"></i><i style="--c:#4f7cff"></i>
+      </div>
+      <div class="dock"><i style="--c:#34c759"></i><i style="--c:#0a84ff"></i><i style="--c:#ff9f0a"></i><i style="--c:#8e8e93"></i></div>
+      <div class="heat l4"></div><div class="heat l3"></div><div class="heat l2"></div><div class="heat l1"></div>
+      <div class="tap" style="left:37%;top:24%"></div>
+      <div class="tap" style="left:41%;top:27%"></div>
+      <div class="tap" style="left:61%;top:49%"></div>
+      <div class="tap" style="left:18%;top:62%"></div>
+      <div class="tap" style="left:61%;top:89%"></div>
+      <div class="pill">14 taps · 2 min 10 s</div>
+    </div>
+    <div class="legend"><span>Few</span><span class="bar"></span><span>Many</span></div>
+    <p class="caption">The heatmap sits on your own screenshot. Icons here are generic.</p>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <p class="sub">Three steps to set it, one gesture to stop it. No account, nothing to configure.</p>
+  <div class="grid">
+    <div class="card"><span class="n">1</span><h3>Screenshot</h3><p>Take a screenshot of your home screen and pick it in TapTrap. That screenshot becomes the fake screen.</p></div>
+    <div class="card"><span class="n">2</span><h3>Trap</h3><p>Start the trap and put the phone down, locked or unlocked. Whoever opens it sees your normal-looking screen — and every tap is recorded.</p></div>
+    <div class="card"><span class="n">3</span><h3>Reveal</h3><p>Come back, use the secret corner gesture, and see the heatmap of exactly where they tapped. Your own exit taps are not counted.</p></div>
+  </div>
+</section>
+
+<section id="passcode">
+  <div class="callout">
+    <div>
+      <h2>Works even if they know your passcode</h2>
+      <p>Apps that take a selfie on a wrong PIN only catch people who fail to unlock your phone. TapTrap catches the ones who already know your code: the fake screen is waiting when they unlock, and at a glance it looks like your normal home screen.</p>
+    </div>
+    <div>
+      <h2>Also a party game</h2>
+      <p>Hand a friend your phone, tell them <strong>not to tap</strong>, and watch them fail. Six looks, from a plain warning to a fake terminal. It records the taps the same way.</p>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <h2>Your taps and screenshots stay on your phone</h2>
+  <p class="sub">TapTrap is a curiosity test for your own phone, built to keep your data where it already is.</p>
+  <ul class="check">
+    <li><strong>No account, no sign-in, no server of ours.</strong> There is nothing to create and nothing to log into.</li>
+    <li><strong>A running trap never uses the camera or the microphone.</strong> Nothing reads your messages or your keyboard. The only thing recorded is where the screen was tapped, and when.</li>
+    <li><strong>Your screenshot and your catches never leave the device.</strong> There is no upload, export or share button in the app — and you can delete everything from Settings.</li>
+    <li><strong>The only ad is one you start yourself</strong> — a short rewarded video from Google AdMob that you choose to watch for one more trap, or to open a catch. Nothing plays inside a trap, and nothing plays that you did not ask for. Purchases run through Apple or Google with RevenueCat. Neither of them receives your taps or your screenshots. Details in the <a href="https://mnpekdemir.github.io/taptrap-pages/privacy-policy.html">Privacy Policy</a>.</li>
+    <li><strong>It only works on the phone you set it up on, by hand.</strong> No remote setup, no hidden icon, no reporting to anyone. Use it on a device you own.</li>
+  </ul>
+</section>
+
+<section id="pro">
+  <h2>Free and PRO</h2>
+  <p class="sub">Try the trap before you decide. Prices are shown in the app, in your own currency, before you buy anything.</p>
+  <div class="plans">
+    <div class="plan">
+      <h3>Free</h3>
+      <ul>
+        <li>The Don't-tap game, unlimited, with two of the six looks</li>
+        <li><strong>Two free traps</strong> — the full thing, including the reveal</li>
+        <li>Practice mode, free: try the trap on yourself first</li>
+        <li>Catch history, and an optional PIN on it</li>
+        <li>Opening a catch's heatmap costs one trap, or a short ad you choose to watch</li>
+      </ul>
+    </div>
+    <div class="plan pro">
+      <h3>TapTrap PRO</h3>
+      <ul>
+        <li>Unlimited traps</li>
+        <li>All six Don't-tap looks</li>
+        <li>No ads at all</li>
+        <li>Weekly or monthly subscription, or a one-time lifetime purchase</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sub" style="margin-bottom:0">Subscriptions renew until you cancel, and you cancel them in your App Store or Google Play account — not by deleting the app. A free trial is offered only when your store has one for your account, and the app shows its length and the price afterwards before you start it. Full terms: <a href="https://mnpekdemir.github.io/taptrap-pages/terms-of-use.html">Terms of Use</a>.</p>
+</section>
+
+<section id="faq" class="faq">
+  <h2>Questions</h2>
+  <details><summary>Does it work when my phone is locked?</summary><p>Yes. Start the trap, then lock the phone or leave it open. Whoever unlocks it sees the fake screen, and their taps are recorded.</p></details>
+  <details><summary>How do I stop the trap?</summary><p>With the secret corner gesture the app teaches you before the trap starts: a long press in the top-left corner, or five quick taps in the same corner. Your own exit taps are removed from the record.</p></details>
+  <details><summary>Can it be put on someone else's phone?</summary><p>TapTrap has to be set up by hand on the phone it runs on. There is no remote setup, no hidden icon, and it reports to no one. It is meant for your own phone.</p></details>
+  <details><summary>Does it identify who tapped?</summary><p>No. It records tap positions on the screen and nothing about the person — no photo, no audio, no name. You see what was tapped, when, and how often.</p></details>
+  <details><summary>What happens to my screenshot?</summary><p>It is copied into the app's private storage on your phone and used as the fake screen and as the heatmap background. It is never uploaded, and "Reset All Data" in Settings deletes it along with every catch.</p></details>
+</section>
+
+<section id="support">
+  <div class="support">
+    <div>
+      <h2>Support</h2>
+      <p class="sub" style="margin:0">A question, a bug, or something about a purchase? Write to us — a real person reads every e-mail.</p>
+    </div>
+    <a class="btn mail" href="mailto:pekdemir.mn@gmail.com?subject=TapTrap%20Support">pekdemir.mn@gmail.com</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================== TÜRKÇE ============================== -->
+<section id="tr" lang="tr">
+
+  <p class="eyebrow"><span class="dot"></span>Türkçe · iPhone ve Android</p>
+  <h1 style="font-size:clamp(30px,4.6vw,46px);line-height:1.1">Telefonuna kim baktı?<br><em>Nereye dokunduğunu gör.</em></h1>
+  <p class="lead">TapTrap, <strong>kendi ana ekranının</strong> ekran görüntüsünü tuzağa çevirir. Telefonunu eline alan kişi sahte bir ekranla karşılaşır ve her dokunuşu sessizce kaydedilir. Geri dönersin, gizli köşe hareketini yaparsın ve neyi açmaya çalıştığını ısı haritasında görürsün — <strong>şifreni bilse bile</strong>.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://apps.apple.com/app/id6762041580" rel="noopener"><small>App Store'dan</small>İndir</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.donttap.dont_tap" rel="noopener"><small>Google Play'den</small>Edin</a>
+  </div>
+  <p class="fine">Ücretsiz dene · Hesap yok · 12 dil · Hiçbir şey telefonundan çıkmaz</p>
+
+  <h2 style="margin-top:44px">Nasıl çalışır</h2>
+  <p class="sub">Üç adımda kur, tek hareketle durdur. Hesap yok, ayar yok.</p>
+  <div class="grid">
+    <div class="card"><span class="n">1</span><h3>Ekran görüntüsü</h3><p>Ana ekranının ekran görüntüsünü al, TapTrap'te seç. O görüntü senin sahte ekranın olur.</p></div>
+    <div class="card"><span class="n">2</span><h3>Tuzak</h3><p>Tuzağı başlat ve telefonu bırak; kilitli ya da açık. Açan kişi normal görünen ekranını görür, her dokunuşu kaydedilir.</p></div>
+    <div class="card"><span class="n">3</span><h3>Sonuç</h3><p>Geri dön, gizli köşe hareketini yap ve nereye dokunduklarını ısı haritasında gör. Senin çıkış dokunuşların sayılmaz.</p></div>
+  </div>
+
+  <div class="callout" style="margin-top:34px">
+    <div>
+      <h2>Şifreni bilse bile çalışır</h2>
+      <p>Yanlış PIN'de selfie çeken uygulamalar yalnızca telefonunu açamayanları yakalar. TapTrap şifreni zaten bilenleri yakalar: telefonu açtıklarında sahte ekran çoktan oradadır ve ilk bakışta normal ana ekranın gibi görünür.</p>
+    </div>
+    <div>
+      <h2>Bir de "Dokunma" oyunu</h2>
+      <p>Arkadaşına telefonu ver, <strong>"dokunma"</strong> de ve dayanamayışını izle. Sade uyarıdan sahte terminale altı görünüm; dokunuşları aynı şekilde kaydeder.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:44px">Dokunuşların ve ekran görüntülerin telefonunda kalır</h2>
+  <p class="sub">TapTrap kendi telefonun için bir merak testidir; verin olduğu yerde kalsın diye tasarlandı.</p>
+  <ul class="check">
+    <li><strong>Hesap yok, giriş yok, bize ait sunucu yok.</strong> Oluşturacak ya da giriş yapacak bir şey yok.</li>
+    <li><strong>Çalışan bir tuzak kamerayı ya da mikrofonu hiç kullanmaz.</strong> Mesajların ya da klavyen okunmaz. Kaydedilen tek şey ekranın neresine, ne zaman dokunulduğudur.</li>
+    <li><strong>Ekran görüntün ve yakalamaların cihazdan hiç çıkmaz.</strong> Uygulamada yükleme, dışa aktarma veya paylaşma düğmesi yoktur — ve her şeyi Ayarlar'dan silebilirsin.</li>
+    <li><strong>Tek reklam, senin başlattığın reklam</strong> — bir tuzak hakkı daha almak ya da bir yakalamayı açmak için izlemeyi kendin seçtiğin kısa bir Google AdMob ödüllü videosu. Tuzağın içinde hiçbir şey oynamaz, istemediğin hiçbir şey oynamaz. Satın almalar Apple ya da Google üzerinden RevenueCat ile yürür. İkisi de dokunuşlarını ya da ekran görüntülerini almaz. Ayrıntı <a href="https://mnpekdemir.github.io/taptrap-pages/privacy-policy.html#tr">Gizlilik Politikası</a>'nda.</li>
+    <li><strong>Yalnız senin elinle kurduğun telefonda çalışır.</strong> Uzaktan kurulum, gizli simge ya da kimseye rapor yok. Sadece sana ait cihazda kullan.</li>
+  </ul>
+
+  <h2 style="margin-top:44px">Ücretsiz ve PRO</h2>
+  <p class="sub">Karar vermeden önce tuzağı dene. Fiyatlar, satın almadan önce kendi para biriminde uygulamada gösterilir.</p>
+  <div class="plans">
+    <div class="plan">
+      <h3>Ücretsiz</h3>
+      <ul>
+        <li>"Dokunma" oyunu, sınırsız, altı görünümden ikisiyle</li>
+        <li><strong>İki ücretsiz tuzak</strong> — yakalandın ekranı dâhil, tamamı</li>
+        <li>Deneme modu, ücretsiz: tuzağı önce kendi üzerinde dene</li>
+        <li>Yakalama geçmişi ve ona isteğe bağlı PIN kilidi</li>
+        <li>Bir yakalamanın ısı haritasını açmak bir tuzak hakkına ya da izlemeyi seçtiğin kısa bir reklama mal olur</li>
+      </ul>
+    </div>
+    <div class="plan pro">
+      <h3>TapTrap PRO</h3>
+      <ul>
+        <li>Sınırsız tuzak</li>
+        <li>Altı "Dokunma" görünümünün tamamı</li>
+        <li>Hiç reklam yok</li>
+        <li>Haftalık ya da aylık abonelik veya tek seferlik ömür boyu satın alma</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sub" style="margin-bottom:0">Abonelikler sen iptal edene kadar yenilenir; iptali uygulamayı silerek değil, App Store ya da Google Play hesabından yaparsın. Ücretsiz deneme yalnızca mağazan hesabına deneme sunuyorsa verilir; uygulama, sen başlatmadan önce süresini ve sonrasındaki fiyatı gösterir. Tam metin: <a href="https://mnpekdemir.github.io/taptrap-pages/terms-of-use.html#tr">Kullanım Şartları</a>.</p>
+
+  <h2 style="margin-top:44px">Sorular</h2>
+  <div class="faq">
+    <details><summary>Telefon kilitliyken çalışır mı?</summary><p>Evet. Tuzağı başlat, sonra telefonu ister kilitle ister açık bırak. Kilidi açan kişi sahte ekranı görür, dokunuşları kaydedilir.</p></details>
+    <details><summary>Tuzağı nasıl durdururum?</summary><p>Uygulamanın tuzak başlamadan önce sana öğrettiği gizli köşe hareketiyle: sol üst köşeye uzun basmak ya da aynı köşeye arka arkaya beş kez dokunmak. Senin çıkış dokunuşların kayıttan çıkarılır.</p></details>
+    <details><summary>Başkasının telefonuna kurulabilir mi?</summary><p>TapTrap, çalıştığı telefonda elle kurulmak zorundadır. Uzaktan kurulum yok, gizli simge yok, kimseye rapor göndermez. Kendi telefonun içindir.</p></details>
+    <details><summary>Kimin dokunduğunu söyler mi?</summary><p>Hayır. Ekrandaki dokunuş konumlarını kaydeder, kişi hakkında hiçbir şey kaydetmez — fotoğraf yok, ses yok, isim yok. Neye, ne zaman ve kaç kez dokunulduğunu görürsün.</p></details>
+    <details><summary>Ekran görüntüme ne olur?</summary><p>Telefonundaki uygulamaya özel alana kopyalanır; sahte ekran ve ısı haritası arka planı olarak kullanılır. Hiçbir yere yüklenmez ve Ayarlar'daki "Tüm Verileri Sıfırla" onu bütün yakalamalarla birlikte siler.</p></details>
+  </div>
+
+  <div class="support" style="margin-top:40px">
+    <div>
+      <h2>Destek</h2>
+      <p class="sub" style="margin:0">Soru, hata ya da satın almayla ilgili bir konu mu var? Yaz — her e-postayı gerçek bir insan okuyor.</p>
+    </div>
+    <a class="btn mail" href="mailto:pekdemir.mn@gmail.com?subject=TapTrap%20Destek">pekdemir.mn@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 MNP · TapTrap</div>
+  <nav aria-label="Legal">
+    <a href="https://mnpekdemir.github.io/taptrap-pages/privacy-policy.html">Privacy Policy</a>
+    <a href="https://mnpekdemir.github.io/taptrap-pages/terms-of-use.html">Terms of Use</a>
+    <a href="mailto:pekdemir.mn@gmail.com">pekdemir.mn@gmail.com</a>
+    <a href="#en">English</a>
+    <a href="#tr">Türkçe</a>
+  </nav>
+</footer>
+
+</div>
+</body>
+</html>
